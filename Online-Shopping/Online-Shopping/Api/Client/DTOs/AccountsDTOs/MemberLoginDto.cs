@@ -18,7 +18,7 @@ namespace Online_Shopping.Api.Client.DTOs
         {
             RuleFor(x => x.Email).MaximumLength(100)
                 .WithMessage("Lenght can not be 100!")
-                 .NotEmpty().WithMessage("Can not be empty");
+                 .NotNull().NotEmpty().WithMessage("Can not be empty");
             RuleFor(x => x.Password).MaximumLength(20).NotNull().NotEmpty().WithMessage("Can not be empty");
         }
     }

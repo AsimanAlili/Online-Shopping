@@ -13,6 +13,7 @@ using Microsoft.Extensions.Logging;
 using Microsoft.IdentityModel.Tokens;
 using Online_Shopping.Data;
 using Online_Shopping.Data.Entities;
+using Online_Shopping.Services;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -44,6 +45,8 @@ namespace Online_Shopping
 
             services.AddControllers()
                 .AddFluentValidation();
+            services.AddScoped<IJwtService, JwtService>();
+
 
             services.AddAutoMapper(typeof(Startup));
 

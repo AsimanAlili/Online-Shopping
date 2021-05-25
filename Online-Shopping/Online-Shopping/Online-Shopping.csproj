@@ -6,11 +6,8 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <Folder Include="Api\Manage\Controllers\" />
-    <Folder Include="Api\Manage\DTOs\" />
     <Folder Include="Data\Enums\" />
-    <Folder Include="Helpers\" />
-    <Folder Include="wwwroot\" />
+    <Folder Include="wwwroot\uploads\admins\" />
   </ItemGroup>
 
   <ItemGroup>

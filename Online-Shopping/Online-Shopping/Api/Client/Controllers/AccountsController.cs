@@ -1,7 +1,10 @@
-﻿using Microsoft.AspNetCore.Hosting;
+﻿using Microsoft.AspNetCore.Authentication;
+using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 using Online_Shopping.Api.Client.DTOs;
 using Online_Shopping.Data;
 using Online_Shopping.Data.Entities;
@@ -30,6 +33,8 @@ namespace Online_Shopping.Api.Client.Controllers
             _roleManager = roleManager;
             _jwtService = jwtService;
         }
+
+        #region Register
         [HttpPost("register")]
         public async Task<IActionResult> Register(RegisterDto registerDto)
         {
@@ -56,9 +61,11 @@ namespace Online_Shopping.Api.Client.Controllers
             #endregion
             await _userManager.AddToRoleAsync(user, "Member");
 
-            return StatusCode(201,user.Id);
+            return StatusCode(201, user.Id);
         }
+        #endregion
 
+        #region Login
         [HttpPost("login")]
         public async Task<IActionResult> Login(MemberLoginDto loginDto)
         {
@@ -83,7 +90,51 @@ namespace Online_Shopping.Api.Client.Controllers
 
             return Ok(new { user.FullName, Token = token });
         }
-        
-       
+        #endregion
+
+        #region EditProfile
+        [Authorize(Roles = "Member")]
+        [HttpPut("edit")]
+
+        public async Task<IActionResult> EditProfile( MemberEditDto editDto)
+        {
+            AppUser existUser = await _userManager.FindByNameAsync(User.Identity.Name);
+
+            #region CheckUser
+            if (existUser == null)
+                return NotFound();
+            #endregion
+
+            #region CheckEmail
+            if (_context.Users.Any(x => x.Email == editDto.Email && x.Id != existUser.Id))
+                return StatusCode(409, $"User already exist by email {editDto.Email}");
+            #endregion
+
+            existUser.UserName = editDto.UserName;
+            existUser.Email = editDto.Email;
+            existUser.PhoneNumber = editDto.PhoneNumber;
+            existUser.ModifiedAt = DateTime.UtcNow.AddHours(4);
+
+            #region CheckPassword
+            if (!string.IsNullOrWhiteSpace(editDto.CurrentPassword) && !string.IsNullOrWhiteSpace(editDto.Password) && !string.IsNullOrWhiteSpace(editDto.ConfirmPassword))
+            {
+                var resultPass = await _userManager.ChangePasswordAsync(existUser, editDto.CurrentPassword, editDto.Password);
+                if (!resultPass.Succeeded)
+                    return StatusCode(402, resultPass.Errors.First().Description);
+            }
+            #endregion
+
+            await _context.SaveChangesAsync();
+            return StatusCode(201, new { existUser.UserName, existUser.Id });
+        }
+        #endregion
+
+        //[HttpPost("logout")]
+        //public async Task<IActionResult> Logout()
+        //{
+        //    await HttpContext.SignOutAsync("Member");
+
+        //    return Ok();
+        //}
     }
 }
