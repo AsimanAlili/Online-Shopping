@@ -46,6 +46,10 @@ namespace Online_Shopping.Api.Manage.Controllers
             if (user == null)
                 return NotFound();
             #endregion
+            if (user.IsAdmin != true)
+                return NotFound();
+
+            
 
             //404
             #region CheckPasswordIncorrect
@@ -122,7 +126,7 @@ namespace Online_Shopping.Api.Manage.Controllers
         }
         #endregion
 
-        #region Test
+        //#region Test
         //[HttpGet("test")]
         //public async Task<IActionResult> Test()
         //{
@@ -131,16 +135,17 @@ namespace Online_Shopping.Api.Manage.Controllers
 
         //    //AppUser user = new AppUser
         //    //{
-        //    //    UserName = "SuperAdmin",
+        //    //    UserName = "Admin",
+        //    //    IsAdmin = Convert.ToBoolean(true)
         //    //};
 
-        //    AppUser user = await _userManager.FindByNameAsync("SuperAdmin");
+        //    AppUser user = await _userManager.FindByNameAsync("Admin");
         //    await _userManager.AddToRoleAsync(user, "Admin");
 
-        //    //await _userManager.CreateAsync(user, "Admin123");
+        //    //await _userManager.CreateAsync(user, "Admin1234");
         //    return Ok();
         //}
-        #endregion
+        //#endregion
 
 
 

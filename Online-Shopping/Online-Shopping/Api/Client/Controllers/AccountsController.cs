@@ -129,12 +129,12 @@ namespace Online_Shopping.Api.Client.Controllers
         }
         #endregion
 
-        //[HttpPost("logout")]
-        //public async Task<IActionResult> Logout()
-        //{
-        //    await HttpContext.SignOutAsync("Member");
+        [HttpPost("logout")]
+        public async Task<IActionResult> Logout()
+        {
+            await HttpContext.SignOutAsync();
 
-        //    return Ok();
-        //}
+            return Ok();
+        }
     }
 }
