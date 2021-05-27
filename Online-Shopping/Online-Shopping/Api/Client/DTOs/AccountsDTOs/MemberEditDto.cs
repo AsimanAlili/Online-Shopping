@@ -24,12 +24,12 @@ namespace Online_Shopping.Api.Client.DTOs
         public MemberEditDtoValidator()
         {
             RuleFor(x => x.UserName).MaximumLength(100)
-                .WithMessage("Lenght can not be 100!")
+                .WithMessage("Lenght cannot be greater than   100!")
                  .NotEmpty().WithMessage("Can not be empty");
             RuleFor(x => x.Email).MaximumLength(100)
-                .WithMessage("Lenght can not be 100!")
+                .WithMessage("Lenght cannot be greater than   100!")
                  .NotEmpty().WithMessage("Can not be empty");
-            RuleFor(x => x.PhoneNumber).MaximumLength(50).WithMessage("Lenght can not be 50!");
+            RuleFor(x => x.PhoneNumber).MaximumLength(50).WithMessage("Lenght cannot be greater than   50!");
 
             RuleFor(x => x.CurrentPassword).MaximumLength(20).NotNull().NotEmpty();
             RuleFor(x => x.CurrentPassword).NotEqual(x => x.Password)

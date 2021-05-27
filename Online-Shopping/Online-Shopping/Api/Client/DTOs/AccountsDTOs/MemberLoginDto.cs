@@ -17,9 +17,9 @@ namespace Online_Shopping.Api.Client.DTOs
         public MemberLoginDtoValidator()
         {
             RuleFor(x => x.Email).MaximumLength(100)
-                .WithMessage("Lenght can not be 100!")
-                 .NotNull().NotEmpty().WithMessage("Can not be empty");
-            RuleFor(x => x.Password).MaximumLength(20).NotNull().NotEmpty().WithMessage("Can not be empty");
+                .WithMessage("Lenght cannot be greater than 100!")
+                 .NotNull().NotEmpty().WithMessage("Cannot be empty");
+            RuleFor(x => x.Password).MaximumLength(20).NotNull().NotEmpty().WithMessage("Cannot be empty");
         }
     }
 }

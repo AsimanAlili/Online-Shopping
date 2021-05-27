@@ -1,3 +1,4 @@
+using FluentValidation;
 using FluentValidation.AspNetCore;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Builder;
@@ -11,6 +12,8 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
 using Microsoft.IdentityModel.Tokens;
+using Online_Shopping.Api.Client.DTOs;
+using Online_Shopping.Api.Manage.DTOs;
 using Online_Shopping.Data;
 using Online_Shopping.Data.Entities;
 using Online_Shopping.Services;
@@ -43,28 +46,40 @@ namespace Online_Shopping
                 options.Password.RequiredLength = 8;
             }).AddDefaultTokenProviders().AddEntityFrameworkStores<AppDbContext>();
 
-            services.AddControllers()
-                .AddFluentValidation();
+            services.AddControllers().AddFluentValidation();
+
             services.AddScoped<IJwtService, JwtService>();
 
+            #region IValidator
+            services.AddTransient<IValidator<AdminLoginDto>, AdminLoginDtoValidator>();
+            services.AddTransient<IValidator<AdminEditDto>, AdminEditDtoValidator>();
+            services.AddTransient<IValidator<RegisterDto>, RegisterDtoValidator>();
+            services.AddTransient<IValidator<MemberEditDto>, MemberEditDtoValidator>();
+            services.AddTransient<IValidator<MemberLoginDto>, MemberLoginDtoValidator>();
+            services.AddTransient<IValidator<CategoryCreateDto>, CategoryCreateDtoValidator>();
+            services.AddTransient<IValidator<SubCategoryCreateDto>, SubCategoryCreateDtoValidator>();
+            #endregion
 
             services.AddAutoMapper(typeof(Startup));
 
+            #region AuthenticationJWTBearer
             services.AddAuthentication(options =>
             {
                 options.DefaultAuthenticateScheme = JwtBearerDefaults.AuthenticationScheme;
                 options.DefaultScheme = JwtBearerDefaults.AuthenticationScheme;
                 options.DefaultChallengeScheme = JwtBearerDefaults.AuthenticationScheme;
-            })
-         .AddJwtBearer(options =>
-         {
-             options.TokenValidationParameters = new TokenValidationParameters
-             {
-                 ValidIssuer = Configuration.GetSection("JWT:Issuer").Value,
-                 ValidAudience = Configuration.GetSection("JWT:Issuer").Value,
-                 IssuerSigningKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(Configuration.GetSection("JWT:Key").Value))
-             };
-         });
+            }).AddJwtBearer(options =>
+            {
+                options.TokenValidationParameters = new TokenValidationParameters
+                {
+                    ValidIssuer = Configuration.GetSection("JWT:Issuer").Value,
+                    ValidAudience = Configuration.GetSection("JWT:Issuer").Value,
+                    IssuerSigningKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(Configuration.GetSection("JWT:Key").Value))
+                };
+            });
+            #endregion
+
+
 
         }
 
