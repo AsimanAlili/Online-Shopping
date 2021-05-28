@@ -32,6 +32,10 @@ namespace Online_Shopping.Api.Manage.Controllers
             if (await _context.Categories.AnyAsync(x => x.Name.ToUpper() == categoryCreate.Name.ToUpper().Trim()))
                 return Conflict($"Category already exist by name{categoryCreate.Name}");
             #endregion
+            #region CheckOrderExist
+            if (await _context.Categories.AnyAsync(x => x.Order == categoryCreate.Order))
+                return Conflict($"Subcategory Already exist by order {categoryCreate.Order}");
+            #endregion
 
             Category category = _mapper.Map<Category>(categoryCreate);
             category.CreatedAt = DateTime.UtcNow.AddHours(4);
@@ -94,6 +98,14 @@ namespace Online_Shopping.Api.Manage.Controllers
         {
             Category category = await _context.Categories.FirstOrDefaultAsync(x => x.Id == id && !x.IsDeleted);
 
+            #region CheckSubCategoryExist
+            if (await _context.Categories.AnyAsync(x => x.Name.ToUpper() == editDto.Name.ToUpper().Trim() && x.Id != id))
+                return Conflict($"Category already exist by name {editDto.Name}");
+            #endregion
+            #region CheckOrderExist
+            if (await _context.Categories.AnyAsync(x => x.Order == editDto.Order && x.Id != id))
+                return Conflict($"Category Already exist by order {editDto.Order}");
+            #endregion
             #region CheckCategoryNotFound
             if (category == null)
                 return NotFound();

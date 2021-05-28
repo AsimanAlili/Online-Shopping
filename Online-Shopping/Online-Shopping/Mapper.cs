@@ -24,8 +24,18 @@ namespace Online_Shopping
             CreateMap<SubCategory, SubCategoryGetDto>();
             CreateMap<SubCategory, SubCategoryItemDto>()
                 .ForMember(dest => dest.CategoryName, from => from.MapFrom(x => x.Category.Name));
+            #endregion
 
+            #region TagMapper
+            CreateMap<TagCreateDto, Tag>();
+            CreateMap<Tag,TagGetDto>();
+            CreateMap<Tag,TagItemDto>();
+            #endregion
 
+            #region BrandMapper
+            CreateMap<BrandCreateDto, Brand>();
+            CreateMap<Brand, BrandGetDto>();
+            CreateMap<Brand, BrandItemDto>();
             #endregion
 
         }

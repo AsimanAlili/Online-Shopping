@@ -14,12 +14,16 @@ namespace Online_Shopping.Data
         public AppDbContext(DbContextOptions<AppDbContext> options) : base(options) { }
         public DbSet<Category> Categories { get; set; }
         public DbSet<SubCategory> SubCategories { get; set; }
+        public DbSet<Tag> Tags { get; set; }
+        public DbSet<Brand> Brands { get; set; }
 
         protected override void OnModelCreating(ModelBuilder builder)
         {
             builder.ApplyConfiguration(new AppUserConfiguration());
             builder.ApplyConfiguration(new CategoryConfiguration());
             builder.ApplyConfiguration(new SubCategoryConfiguration());
+            builder.ApplyConfiguration(new TagConfiguration());
+            builder.ApplyConfiguration(new BrandConfiguration());
             base.OnModelCreating(builder);
         }
 
