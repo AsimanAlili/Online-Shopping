@@ -6,6 +6,11 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <Compile Remove="Data\Migrations\20210531171327_SizeTablesCreated.cs" />
+    <Compile Remove="Data\Migrations\20210531171327_SizeTablesCreated.Designer.cs" />
+  </ItemGroup>
+
+  <ItemGroup>
     <Folder Include="Data\Enums\" />
     <Folder Include="wwwroot\uploads\admins\" />
   </ItemGroup>

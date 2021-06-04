@@ -6,13 +6,14 @@ using System.Threading.Tasks;
 
 namespace Online_Shopping.Data.Entities
 {
-    public class Category:BaseEntity
+    public class ProductPhoto:BaseEntity
     {
+        public int ProductId { get; set; }
         public string Name { get; set; }
 
-        [Range(minimum: 1, maximum: int.MaxValue)]
+        [Range(1, int.MaxValue)]
         public int Order { get; set; }
-        public bool IsDeleted { get; set; }
-        public List<SubCategory> SubCategories { get; set; }
+
+        public Product Product { get; set; }
     }
 }

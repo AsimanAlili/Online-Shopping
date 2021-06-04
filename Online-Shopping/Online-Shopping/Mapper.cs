@@ -38,6 +38,18 @@ namespace Online_Shopping
             CreateMap<Brand, BrandItemDto>();
             #endregion
 
+            #region SizeMapper
+            CreateMap<SizeCreateDto, Size>();
+            CreateMap<Size, SizeGetDto>();
+            CreateMap<Size, SizeItemDto>();
+            #endregion
+
+            #region ColorMapper
+            CreateMap<ColorCreateDto, Color>();
+            CreateMap<Color, ColorGetDto>();
+            CreateMap<Color, ColorItemDto>();
+            #endregion
+
         }
     }
 }

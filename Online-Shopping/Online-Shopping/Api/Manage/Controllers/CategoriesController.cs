@@ -34,7 +34,7 @@ namespace Online_Shopping.Api.Manage.Controllers
             #endregion
             #region CheckOrderExist
             if (await _context.Categories.AnyAsync(x => x.Order == categoryCreate.Order))
-                return Conflict($"Subcategory Already exist by order {categoryCreate.Order}");
+                return Conflict($"Category Already exist by order {categoryCreate.Order}");
             #endregion
 
             Category category = _mapper.Map<Category>(categoryCreate);

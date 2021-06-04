@@ -16,6 +16,12 @@ namespace Online_Shopping.Data
         public DbSet<SubCategory> SubCategories { get; set; }
         public DbSet<Tag> Tags { get; set; }
         public DbSet<Brand> Brands { get; set; }
+        public DbSet<Size> Sizes { get; set; }
+        public DbSet<Color> Colors { get; set; }
+        public DbSet<Product> Products { get; set; }
+        public DbSet<ProductSize> ProductSizes { get; set; }
+        public DbSet<ProductColor> ProductColors { get; set; }
+        public DbSet<ProductPhoto> ProductPhotos { get; set; }
 
         protected override void OnModelCreating(ModelBuilder builder)
         {
@@ -24,6 +30,11 @@ namespace Online_Shopping.Data
             builder.ApplyConfiguration(new SubCategoryConfiguration());
             builder.ApplyConfiguration(new TagConfiguration());
             builder.ApplyConfiguration(new BrandConfiguration());
+            builder.ApplyConfiguration(new SizeConfiguration());
+            builder.ApplyConfiguration(new ColorConfiguration());
+            builder.ApplyConfiguration(new ProductColorConfiguration());
+            builder.ApplyConfiguration(new ProductSizeConfiguration());
+            builder.ApplyConfiguration(new ProductConfiguration());
             base.OnModelCreating(builder);
         }
 
