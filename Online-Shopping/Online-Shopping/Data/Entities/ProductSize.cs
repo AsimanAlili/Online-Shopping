@@ -8,7 +8,7 @@ namespace Online_Shopping.Data.Entities
     public class ProductSize
     {
         public int Id { get; set; }
-        public bool IsAvailable { get; set; }
+        public bool IsAvailableSize { get; set; }
         public int ProductId { get; set; }
         public int SizeId { get; set; }
         public Product Product { get; set; }

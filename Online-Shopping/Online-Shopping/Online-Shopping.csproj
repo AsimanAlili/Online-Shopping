@@ -8,11 +8,14 @@
   <ItemGroup>
     <Compile Remove="Data\Migrations\20210531171327_SizeTablesCreated.cs" />
     <Compile Remove="Data\Migrations\20210531171327_SizeTablesCreated.Designer.cs" />
+    <Compile Remove="Data\Migrations\20210607130555_ProductColorAndProductSizeSomeChangedAndDescAndPhotoAddedIntoCategory.cs" />
+    <Compile Remove="Data\Migrations\20210607130555_ProductColorAndProductSizeSomeChangedAndDescAndPhotoAddedIntoCategory.Designer.cs" />
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="Data\Enums\" />
     <Folder Include="wwwroot\uploads\admins\" />
+    <Folder Include="wwwroot\uploads\categories\" />
+    <Folder Include="wwwroot\uploads\products\" />
   </ItemGroup>
 
   <ItemGroup>

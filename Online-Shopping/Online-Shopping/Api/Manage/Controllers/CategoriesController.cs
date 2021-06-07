@@ -1,4 +1,6 @@
 ﻿using AutoMapper;
+using JobbApi.Helpers;
+using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
@@ -18,26 +20,49 @@ namespace Online_Shopping.Api.Manage.Controllers
     {
         private readonly AppDbContext _context;
         private readonly IMapper _mapper;
+        private readonly IWebHostEnvironment _env;
 
-        public CategoriesController(AppDbContext context, IMapper mapper)
+        public CategoriesController(AppDbContext context, IMapper mapper, IWebHostEnvironment env)
         {
             _context = context;
             _mapper = mapper;
+            _env = env;
         }
         #region Create
         [HttpPost("create")]
-        public async Task<IActionResult> Create(CategoryCreateDto categoryCreate)
+        public async Task<IActionResult> Create([FromForm]  CategoryCreateDto createDto)
         {
             #region CheckCategoryExist
-            if (await _context.Categories.AnyAsync(x => x.Name.ToUpper() == categoryCreate.Name.ToUpper().Trim()))
-                return Conflict($"Category already exist by name{categoryCreate.Name}");
+            if (await _context.Categories.AnyAsync(x => x.Name.ToUpper() == createDto.Name.ToUpper().Trim()))
+                return Conflict($"Category already exist by name{createDto.Name}");
             #endregion
             #region CheckOrderExist
-            if (await _context.Categories.AnyAsync(x => x.Order == categoryCreate.Order))
-                return Conflict($"Category Already exist by order {categoryCreate.Order}");
+            if (await _context.Categories.AnyAsync(x => x.Order == createDto.Order))
+                return Conflict($"Category Already exist by order {createDto.Order}");
+            #endregion
+            #region CheckFile
+            if (createDto.File != null)
+            {
+                #region CheckPhotoLength
+                if (createDto.File.Length > 4 * (1024 * 1024))
+                {
+                    return StatusCode(409, "File cannot be more than 4MB");
+                }
+                #endregion
+                #region CheckPhotoContentType
+                if (createDto.File.ContentType != "image/png" && createDto.File.ContentType != "image/jpeg")
+                {
+                    return StatusCode(409, "File only jpeg and png files accepted");
+                }
+                #endregion
+
+                string filename = FileManagerHelper.Save(_env.WebRootPath, "uploads/categories", createDto.File);
+
+                createDto.Photo = filename;
+            }
             #endregion
 
-            Category category = _mapper.Map<Category>(categoryCreate);
+            Category category = _mapper.Map<Category>(createDto);
             category.CreatedAt = DateTime.UtcNow.AddHours(4);
             category.ModifiedAt = DateTime.UtcNow.AddHours(4);
 
@@ -94,7 +119,7 @@ namespace Online_Shopping.Api.Manage.Controllers
 
         #region Edit
         [HttpPut("{id}")]
-        public async Task<IActionResult> Edit(int id, CategoryCreateDto editDto)
+        public async Task<IActionResult> Edit(int id, [FromForm] CategoryCreateDto editDto)
         {
             Category category = await _context.Categories.FirstOrDefaultAsync(x => x.Id == id && !x.IsDeleted);
 
@@ -109,10 +134,36 @@ namespace Online_Shopping.Api.Manage.Controllers
             #region CheckCategoryNotFound
             if (category == null)
                 return NotFound();
-            #endregion 
+            #endregion
+            #region CheckFile
+            if (editDto.File != null)
+            {
+                #region CheckPhotoLength
+                if (editDto.File.Length > 4 * (1024 * 1024))
+                {
+                    return StatusCode(409, "File cannot be more than 4MB");
+                }
+                #endregion
+                #region CheckPhotoContentType
+                if (editDto.File.ContentType != "image/png" && editDto.File.ContentType != "image/jpeg")
+                {
+                    return StatusCode(409, "File only jpeg and png files accepted");
+                }
+                #endregion
+
+                string filename = FileManagerHelper.Save(_env.WebRootPath, "uploads/categories", editDto.File);
+                if (!string.IsNullOrWhiteSpace(category.Photo))
+                {
+                    FileManagerHelper.Delete(_env.WebRootPath, "uploads/categories", category.Photo);
+                }
+                category.Photo = filename;
+            }
+
+            #endregion
 
             category.Name = editDto.Name;
             category.Order = editDto.Order;
+            category.Desc = editDto.Desc;
             category.ModifiedAt = DateTime.UtcNow.AddHours(4);
 
             await _context.SaveChangesAsync();

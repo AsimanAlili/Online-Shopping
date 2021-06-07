@@ -13,6 +13,9 @@ namespace Online_Shopping.Data.Configurations
         public void Configure(EntityTypeBuilder<Category> builder)
         {
             builder.Property(x => x.Name).HasMaxLength(50).IsRequired();
+            builder.Property(x => x.Desc).HasMaxLength(1500);
+            builder.Property(x => x.Photo).HasMaxLength(100);
+
 
         }
     }

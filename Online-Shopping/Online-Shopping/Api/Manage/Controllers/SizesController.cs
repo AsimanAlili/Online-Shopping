@@ -53,7 +53,7 @@ namespace Online_Shopping.Api.Manage.Controllers
         [HttpGet("{id}")]
         public async Task<IActionResult> Get(int id)
         {
-            Size size = await _context.Sizes.FirstOrDefaultAsync(x => x.Id == id && !x.IsAvailable);
+            Size size = await _context.Sizes.FirstOrDefaultAsync(x => x.Id == id);
 
             #region CheckSizeNotFound
             if (size == null)
@@ -69,13 +69,13 @@ namespace Online_Shopping.Api.Manage.Controllers
         [HttpGet]
         public async Task<IActionResult> GetAll(int page = 1)
         {
-            List<Size> sizes = await _context.Sizes.Where(x => !x.IsAvailable)
+            List<Size> sizes = await _context.Sizes
                 .OrderByDescending(x => x.Order).Skip((page - 1) * 8).Take(8).ToListAsync();
 
             SizeListDto sizesDto = new SizeListDto
             {
                 Sizes = _mapper.Map<List<SizeItemDto>>(sizes),
-                TotalCount = await _context.Sizes.Where(x => !x.IsAvailable).CountAsync()
+                TotalCount = await _context.Sizes.CountAsync()
             };
 
             return Ok(sizesDto);
@@ -86,7 +86,7 @@ namespace Online_Shopping.Api.Manage.Controllers
         [HttpGet("all")]
         public async Task<IActionResult> GetAll()
         {
-            List<Size> sizes = await _context.Sizes.Where(x => !x.IsAvailable)
+            List<Size> sizes = await _context.Sizes
                 .OrderByDescending(x => x.Order).ToListAsync();
 
             return Ok(_mapper.Map<List<SizeItemDto>>(sizes));
@@ -97,7 +97,7 @@ namespace Online_Shopping.Api.Manage.Controllers
         [HttpPut("{id}")]
         public async Task<IActionResult> Edit(int id, SizeCreateDto editDto)
         {
-            Size size = await _context.Sizes.FirstOrDefaultAsync(x => x.Id == id && !x.IsAvailable);
+            Size size = await _context.Sizes.FirstOrDefaultAsync(x => x.Id == id);
 
             #region CheckSubSizeExist
             if (await _context.Sizes.AnyAsync(x => x.Name.ToUpper() == editDto.Name.ToUpper().Trim() && x.Id != id))

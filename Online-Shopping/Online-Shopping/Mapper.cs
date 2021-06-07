@@ -49,6 +49,12 @@ namespace Online_Shopping
             CreateMap<Color, ColorGetDto>();
             CreateMap<Color, ColorItemDto>();
             #endregion
+            #region ProductMapper
+            CreateMap<ProductCreateDto, Product>();
+            CreateMap<ProductColorDto, ProductColor>();
+            CreateMap<ProductSizeDto, ProductSize>();
+            CreateMap<ProductPhotoDto, ProductPhoto>();
+            #endregion
 
         }
     }

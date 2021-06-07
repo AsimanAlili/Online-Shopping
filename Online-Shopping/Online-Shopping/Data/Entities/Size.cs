@@ -12,8 +12,6 @@ namespace Online_Shopping.Data.Entities
 
         [Range(minimum: 1, maximum: int.MaxValue)]
         public int Order { get; set; }
-        public bool IsAvailable { get; set; }
-
         public List<ProductSize> ProductSizes { get; set; }
     }
 }

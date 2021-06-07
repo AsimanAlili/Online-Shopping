@@ -8,7 +8,7 @@ namespace Online_Shopping.Data.Entities
     public class ProductColor
     {
         public int Id { get; set; }
-        public bool IsAvailable { get; set; }
+        public bool IsAvailableColor { get; set; }
         public int ProductId { get; set; }
         public int ColorId { get; set; }
         public Product Product { get; set; }
