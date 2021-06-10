@@ -50,10 +50,33 @@ namespace Online_Shopping
             CreateMap<Color, ColorItemDto>();
             #endregion
             #region ProductMapper
-            CreateMap<ProductCreateDto, Product>();
+
+            #region ProductCreateMapper
+            CreateMap<ProductCreateDto, Product>()
+               .ForMember(dest => dest.ProductColors, from => from.MapFrom(x => x.ProductColors));
+
             CreateMap<ProductColorDto, ProductColor>();
             CreateMap<ProductSizeDto, ProductSize>();
             CreateMap<ProductPhotoDto, ProductPhoto>();
+            #endregion
+            #region ProductGetByIdMapper
+            CreateMap<Product, ProductGetDto>();
+            CreateMap<ProductPhoto, PhotoInProductDto>();
+            CreateMap<SubCategory, ProductInSubCategoryDto>();
+            CreateMap<Brand, ProductInBrandDto>();
+            CreateMap<ProductColor, ColorInProductDto>()
+               .ForMember(dest => dest.ColorName, from => from.MapFrom(x => x.Color.Name));
+            CreateMap<ProductSize, SizeInProductDto>()
+                .ForMember(dest => dest.SizeName, from => from.MapFrom(x => x.Size.Name));
+
+            CreateMap<Product, ProductItemDto>()
+                .ForMember(dest => dest.SubCategoryName, from => from.MapFrom(x => x.SubCategory.Name))
+                .ForMember(dest => dest.BrandName, from => from.MapFrom(x => x.Brand.Name));
+
+
+
+            #endregion
+
             #endregion
 
         }

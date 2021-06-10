@@ -47,7 +47,5 @@ namespace Online_Shopping.Data.Entities
         [NotMapped]
         public List<IFormFile> Files { get; set; } = new List<IFormFile>();
 
-
-
     }
 }

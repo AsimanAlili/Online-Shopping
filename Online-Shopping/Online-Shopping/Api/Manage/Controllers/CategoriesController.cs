@@ -123,7 +123,7 @@ namespace Online_Shopping.Api.Manage.Controllers
         {
             Category category = await _context.Categories.FirstOrDefaultAsync(x => x.Id == id && !x.IsDeleted);
 
-            #region CheckSubCategoryExist
+            #region CheckCategoryExist
             if (await _context.Categories.AnyAsync(x => x.Name.ToUpper() == editDto.Name.ToUpper().Trim() && x.Id != id))
                 return Conflict($"Category already exist by name {editDto.Name}");
             #endregion

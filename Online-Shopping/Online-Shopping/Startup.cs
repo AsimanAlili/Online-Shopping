@@ -63,6 +63,7 @@ namespace Online_Shopping
             services.AddTransient<IValidator<SizeCreateDto>, SizeCreateValidatorDto>();
             services.AddTransient<IValidator<ColorCreateDto>, ColorCreateValidatorDto>();
             services.AddTransient<IValidator<ProductCreateDto>, ProductCreateValidatorDto>();
+            services.AddTransient<IValidator<ProductPhotoDto>, ProductPhotoDtoValidator>();
             #endregion
 
             services.AddAutoMapper(typeof(Startup));
