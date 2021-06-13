@@ -48,7 +48,7 @@ namespace Online_Shopping.Api.Manage.Controllers
             if (await _context.Products.AnyAsync(x => x.Name.ToUpper() == createDto.Name.ToUpper().Trim()))
                 return Conflict($"Product already exist by name {createDto.Name}");
             #endregion
-
+            
 
             #region CheckFile
             createDto.ProductPhotos = new List<ProductPhotoDto>();
@@ -74,7 +74,7 @@ namespace Online_Shopping.Api.Manage.Controllers
             product.DiscountedPrice = product.DiscountPercent <= 0 ? product.Price : (product.Price * (100 - product.DiscountPercent) / 100);
             product.CreatedAt = DateTime.UtcNow.AddHours(4);
             product.ModifiedAt = DateTime.UtcNow.AddHours(4);
-
+            //product.ProductColors.FirstOrDefault(pc => pc.ColorId == 2).ColorCount = createDto.ProductColors.FirstOrDefault().Count;
             await _context.Products.AddAsync(product);
             await _context.SaveChangesAsync();
 
@@ -87,19 +87,29 @@ namespace Online_Shopping.Api.Manage.Controllers
         [HttpGet("{id}")]
         public async Task<IActionResult> Get(int id)
         {
-            Product product = await _context.Products.
-                Include(x=>x.Brand).Include(x=>x.SubCategory).Include(x=>x.ProductSizes).ThenInclude(x=>x.Size)
+            //Product pr = _context.Products.FirstOrDefault(p => p.ProductColors.Where(pc => !pc.IsAvailableColor).Any());
+            Product product = await _context.Products
+               .Include(x=>x.Brand).Include(x=>x.SubCategory).Include(x=>x.ProductSizes).ThenInclude(x=>x.Size)
                 .Include(x=>x.ProductColors).ThenInclude(x=>x.Color).Include(x=>x.ProductPhotos)
-                .FirstOrDefaultAsync(x => x.Id == id && !x.IsAvailable );
-            
+                .FirstOrDefaultAsync(x => x.Id == id && !x.IsAvailable);
+
+            List<ProductColor> pc = product.ProductColors.Where(x => !x.IsAvailableColor).ToList();
+            product.ProductColors = pc;
+
+            List<ProductSize> ps = product.ProductSizes.Where(x => !x.IsAvailableSize).ToList();
+            product.ProductSizes = ps;
+
             #region CheckCategoryNotFound
             if (product == null)
                 return NotFound();
             #endregion
 
+
             ProductGetDto productGetDto = _mapper.Map<ProductGetDto>(product);
 
             return Ok(productGetDto);
+
+
         }
         #endregion
 
@@ -111,6 +121,15 @@ namespace Online_Shopping.Api.Manage.Controllers
                 Include(x => x.Brand).Include(x => x.SubCategory).Include(x => x.ProductSizes).ThenInclude(x => x.Size)
                 .Include(x => x.ProductColors).ThenInclude(x => x.Color).Include(x => x.ProductPhotos)
                 .Skip((page - 1) * 10).Take(10).ToListAsync();
+
+            foreach (var product in products)
+            {
+                List<ProductColor> pc = product.ProductColors.Where(x => !x.IsAvailableColor).ToList();
+                product.ProductColors = pc;
+                List<ProductSize> ps = product.ProductSizes.Where(x => !x.IsAvailableSize).ToList();
+                product.ProductSizes = ps;
+            }
+
 
             ProductListDto productList = new ProductListDto
             {
@@ -155,7 +174,7 @@ namespace Online_Shopping.Api.Manage.Controllers
             #endregion
             #endregion
 
-            product.ProductColors = await _getUpdatedProductColorsAsync(product.ProductColors, editDto.ProductColors.Select(x=>x.ColorId).ToList(), product.Id);
+            product.ProductColors = await _getUpdatedProductColorsAsync(product.ProductColors, editDto.ProductColors.Select(x=>x.ColorId).ToList(), product.Id );
             product.ProductSizes = await _getUpdatedProductSizesAsync(product.ProductSizes, editDto.ProductSizes.Select(x => x.SizeId).ToList(), product.Id);
 
 
@@ -178,9 +197,12 @@ namespace Online_Shopping.Api.Manage.Controllers
             //}
             #region File
             List<ProductPhoto> removablePhotos = new List<ProductPhoto>();
+            var productP = product.ProductPhotos.Select(x => x.Id).ToList();
+            editDto.FileIds = productP;
+
             foreach (var item in product.ProductPhotos)
             {
-                if (product.Any(x => x. == item.Name))
+                if (editDto.FileIds.Any(x => x == item.Id))
                     continue;
 
                 FileManagerHelper.Delete(_env.WebRootPath, "uploads/products", item.Name);

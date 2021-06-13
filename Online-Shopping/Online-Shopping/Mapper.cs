@@ -1,4 +1,5 @@
 ﻿using AutoMapper;
+using Online_Shopping.Api.Client.DTOs;
 using Online_Shopping.Api.Manage.DTOs;
 using Online_Shopping.Data.Entities;
 using System;
@@ -49,17 +50,13 @@ namespace Online_Shopping
             CreateMap<Color, ColorGetDto>();
             CreateMap<Color, ColorItemDto>();
             #endregion
-            #region ProductMapper
 
-            #region ProductCreateMapper
+            #region ProductMapper
             CreateMap<ProductCreateDto, Product>()
                .ForMember(dest => dest.ProductColors, from => from.MapFrom(x => x.ProductColors));
-
             CreateMap<ProductColorDto, ProductColor>();
             CreateMap<ProductSizeDto, ProductSize>();
             CreateMap<ProductPhotoDto, ProductPhoto>();
-            #endregion
-            #region ProductGetByIdMapper
             CreateMap<Product, ProductGetDto>();
             CreateMap<ProductPhoto, PhotoInProductDto>();
             CreateMap<SubCategory, ProductInSubCategoryDto>();
@@ -68,15 +65,18 @@ namespace Online_Shopping
                .ForMember(dest => dest.ColorName, from => from.MapFrom(x => x.Color.Name));
             CreateMap<ProductSize, SizeInProductDto>()
                 .ForMember(dest => dest.SizeName, from => from.MapFrom(x => x.Size.Name));
-
             CreateMap<Product, ProductItemDto>()
                 .ForMember(dest => dest.SubCategoryName, from => from.MapFrom(x => x.SubCategory.Name))
                 .ForMember(dest => dest.BrandName, from => from.MapFrom(x => x.Brand.Name));
 
-
-
+            #region SlidersMapper
+            CreateMap<SliderCreateDto, Slider>();
+            CreateMap<Slider, SliderGetDto>();
+            CreateMap<Slider, SliderItemDto>();
             #endregion
-
+            #region OrdersMapper
+            CreateMap<OrderCreateDto, Order>();
+            #endregion
             #endregion
 
         }

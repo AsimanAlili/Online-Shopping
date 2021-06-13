@@ -32,7 +32,8 @@ namespace Online_Shopping.Api.Manage.DTOs
         public string BrandName { get; set; }
 
         public List<ColorInProductDto> ProductColors { get; set; }
+        public List<SizeInProductDto> ProductSizes { get; set; }
+        public List<PhotoInProductDto> ProductPhotos { get; set; }
 
     }
-    //public class Product
 }

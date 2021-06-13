@@ -14,5 +14,6 @@ namespace Online_Shopping.Data.Entities
         public bool IsAdmin { get; set; }
         public DateTime CreatedAt { get; set; }
         public DateTime ModifiedAt { get; set; }
+        public List<Order> Orders { get; set; }
     }
 }

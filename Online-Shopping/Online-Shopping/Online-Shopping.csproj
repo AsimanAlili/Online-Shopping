@@ -10,11 +10,16 @@
     <Compile Remove="Data\Migrations\20210531171327_SizeTablesCreated.Designer.cs" />
     <Compile Remove="Data\Migrations\20210607130555_ProductColorAndProductSizeSomeChangedAndDescAndPhotoAddedIntoCategory.cs" />
     <Compile Remove="Data\Migrations\20210607130555_ProductColorAndProductSizeSomeChangedAndDescAndPhotoAddedIntoCategory.Designer.cs" />
+    <Compile Remove="Data\Migrations\20210613114640_OrdersTableCreated.cs" />
+    <Compile Remove="Data\Migrations\20210613114640_OrdersTableCreated.Designer.cs" />
+    <Compile Remove="Data\Migrations\20210613121902_DiscountedPriceColumnAddedIntoOrder.cs" />
+    <Compile Remove="Data\Migrations\20210613121902_DiscountedPriceColumnAddedIntoOrder.Designer.cs" />
   </ItemGroup>
 
   <ItemGroup>
     <Folder Include="wwwroot\uploads\admins\" />
     <Folder Include="wwwroot\uploads\categories\" />
+    <Folder Include="wwwroot\uploads\sliders\" />
     <Folder Include="wwwroot\uploads\products\" />
   </ItemGroup>
 

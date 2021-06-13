@@ -22,6 +22,9 @@ namespace Online_Shopping.Data
         public DbSet<ProductSize> ProductSizes { get; set; }
         public DbSet<ProductColor> ProductColors { get; set; }
         public DbSet<ProductPhoto> ProductPhotos { get; set; }
+        public DbSet<Slider> Sliders { get; set; }
+        public DbSet<Order> Orders { get; set; }
+        public DbSet<ProductReview> ProductReviews { get; set; }
 
         protected override void OnModelCreating(ModelBuilder builder)
         {
@@ -35,6 +38,9 @@ namespace Online_Shopping.Data
             builder.ApplyConfiguration(new ProductColorConfiguration());
             builder.ApplyConfiguration(new ProductSizeConfiguration());
             builder.ApplyConfiguration(new ProductConfiguration());
+            builder.ApplyConfiguration(new SliderConfiguration());
+            builder.ApplyConfiguration(new OrderConfiguration());
+            builder.ApplyConfiguration(new ProductReviewConfiguration());
             base.OnModelCreating(builder);
         }
 

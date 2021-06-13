@@ -43,9 +43,13 @@ namespace Online_Shopping.Data.Entities
         public List<ProductSize> ProductSizes { get; set; }
         public List<ProductColor> ProductColors { get; set; }
         public List<ProductPhoto> ProductPhotos { get; set; }
+        public List<Order> Orders { get; set; }
+        public List<ProductReview> ProductReviews { get; set; }
 
         [NotMapped]
         public List<IFormFile> Files { get; set; } = new List<IFormFile>();
+        [NotMapped]
+        public List<int> FileIds { get; set; }
 
     }
 }

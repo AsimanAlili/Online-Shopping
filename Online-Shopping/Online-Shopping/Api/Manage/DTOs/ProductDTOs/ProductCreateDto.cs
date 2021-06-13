@@ -40,6 +40,7 @@ namespace Online_Shopping.Api.Manage.DTOs
     {
         public int ColorId { get; set; }
         public bool IsAvailableColor { get; set; }
+        //public int Count { get; set; }
 
     }
     public class ProductSizeDto
