@@ -5,7 +5,7 @@ using System.IO;
 using System.Linq;
 using System.Threading.Tasks;
 
-namespace JobbApi.Helpers
+namespace Online_Shopping.Helpers
 {
     public class FileManagerHelper
     {

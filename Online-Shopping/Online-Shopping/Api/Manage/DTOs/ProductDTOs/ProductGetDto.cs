@@ -60,6 +60,7 @@ namespace Online_Shopping.Api.Manage.DTOs
     }
     public class PhotoInProductDto
     {
+        public int Id { get; set; }
         public int ProductId { get; set; }
         public string Name { get; set; }
         public int Order { get; set; }

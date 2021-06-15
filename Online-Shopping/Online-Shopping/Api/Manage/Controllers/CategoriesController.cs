@@ -1,5 +1,5 @@
 ﻿using AutoMapper;
-using JobbApi.Helpers;
+using Online_Shopping.Helpers;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;

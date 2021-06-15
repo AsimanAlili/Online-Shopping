@@ -25,6 +25,9 @@ namespace Online_Shopping.Data
         public DbSet<Slider> Sliders { get; set; }
         public DbSet<Order> Orders { get; set; }
         public DbSet<ProductReview> ProductReviews { get; set; }
+        public DbSet<BlogCategory> BlogCategories { get; set; }
+        public DbSet<BlogTag> BlogTags { get; set; }
+        public DbSet<Blog> Blogs { get; set; }
 
         protected override void OnModelCreating(ModelBuilder builder)
         {
@@ -41,10 +44,10 @@ namespace Online_Shopping.Data
             builder.ApplyConfiguration(new SliderConfiguration());
             builder.ApplyConfiguration(new OrderConfiguration());
             builder.ApplyConfiguration(new ProductReviewConfiguration());
+            builder.ApplyConfiguration(new BlogCategoryConfiguration());
+            builder.ApplyConfiguration(new BlogTagConfiguration());
+            builder.ApplyConfiguration(new BlogConfiguration());
             base.OnModelCreating(builder);
         }
-
-
-
     }
 }

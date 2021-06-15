@@ -99,7 +99,7 @@ namespace Online_Shopping.Api.Manage.Controllers
         {
             Size size = await _context.Sizes.FirstOrDefaultAsync(x => x.Id == id);
 
-            #region CheckSubSizeExist
+            #region CheckSizeExist
             if (await _context.Sizes.AnyAsync(x => x.Name.ToUpper() == editDto.Name.ToUpper().Trim() && x.Id != id))
                 return Conflict($"Size already exist by name {editDto.Name}");
             #endregion

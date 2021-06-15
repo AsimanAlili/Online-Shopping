@@ -19,13 +19,11 @@ namespace Online_Shopping.Api.Client.Controllers
     {
         private readonly AppDbContext _context;
         private readonly IMapper _mapper;
-        private readonly UserManager<AppUser> _userManager;
 
-        public OrdersController(AppDbContext context, IMapper mapper, UserManager<AppUser> userManager)
+        public OrdersController(AppDbContext context, IMapper mapper)
         {
             _context = context;
             _mapper = mapper;
-            _userManager = userManager;
         }
 
         #region Create

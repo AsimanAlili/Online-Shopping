@@ -8,5 +8,7 @@ namespace Online_Shopping.Data.Entities
     public class Tag:BaseEntity
     {
         public string Name { get; set; }
+        public List<BlogTag> BlogTags { get; set; }
+
     }
 }

@@ -79,6 +79,12 @@ namespace Online_Shopping
             #endregion
             #endregion
 
+            #region BlogCategoryMapper
+            CreateMap<BlogCategoryCreateDto, BlogCategory>();
+            CreateMap<BlogCategory, BlogCategoryGetDto>();
+            CreateMap<BlogCategory, BlogCategoryItemDto>();
+            #endregion
+
         }
     }
 }

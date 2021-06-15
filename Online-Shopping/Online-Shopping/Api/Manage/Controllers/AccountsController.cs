@@ -1,4 +1,4 @@
-﻿using JobbApi.Helpers;
+﻿using Online_Shopping.Helpers;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Http;
