@@ -14,10 +14,10 @@ namespace Online_Shopping.Data.Entities
         public string FullName { get; set; }
         public string Desc { get; set; }
         public string Photo { get; set; }
-        [NotMapped]
-        public IFormFile File { get; set; }
-
         public BlogCategory BlogCategory { get; set; }
         public List<BlogTag> BlogTags { get; set; }
+
+        [NotMapped]
+        public IFormFile File { get; set; }
     }
 }

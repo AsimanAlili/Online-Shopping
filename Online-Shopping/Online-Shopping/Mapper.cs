@@ -57,6 +57,7 @@ namespace Online_Shopping
             CreateMap<ProductColorDto, ProductColor>();
             CreateMap<ProductSizeDto, ProductSize>();
             CreateMap<ProductPhotoDto, ProductPhoto>();
+
             CreateMap<Product, ProductGetDto>();
             CreateMap<ProductPhoto, PhotoInProductDto>();
             CreateMap<SubCategory, ProductInSubCategoryDto>();
@@ -68,21 +69,40 @@ namespace Online_Shopping
             CreateMap<Product, ProductItemDto>()
                 .ForMember(dest => dest.SubCategoryName, from => from.MapFrom(x => x.SubCategory.Name))
                 .ForMember(dest => dest.BrandName, from => from.MapFrom(x => x.Brand.Name));
+            #endregion
 
             #region SlidersMapper
             CreateMap<SliderCreateDto, Slider>();
             CreateMap<Slider, SliderGetDto>();
             CreateMap<Slider, SliderItemDto>();
             #endregion
+
             #region OrdersMapper
             CreateMap<OrderCreateDto, Order>();
-            #endregion
             #endregion
 
             #region BlogCategoryMapper
             CreateMap<BlogCategoryCreateDto, BlogCategory>();
             CreateMap<BlogCategory, BlogCategoryGetDto>();
             CreateMap<BlogCategory, BlogCategoryItemDto>();
+            #endregion
+
+            #region BlogMapper
+            CreateMap<BlogCreateDto,Blog>();
+            CreateMap<BlogTagDto,BlogTag>();
+            CreateMap<Blog, BlogGetDto>();
+            CreateMap<BlogCategory, BlogInBlogCategoryDto>();
+            CreateMap<BlogTag, TagInBlogDto>();
+            CreateMap<BlogTag, TagInBlogDto>()
+              .ForMember(dest => dest.TagName, from => from.MapFrom(x => x.Tag.Name));
+            CreateMap<Blog, BlogItemDto>()
+                .ForMember(dest => dest.BlogCategoryName, from => from.MapFrom(x => x.BlogCategory.Name));
+            #endregion
+
+            #region FeaturesMapper
+            CreateMap<FeatureCreateDto, Feature>();
+            CreateMap<Feature, FeatureGetDto>();
+            CreateMap<Feature, FeatureItemDto>();
             #endregion
 
         }

@@ -89,13 +89,12 @@ namespace Online_Shopping.Api.Manage.Controllers
         [HttpGet("{id}")]
         public async Task<IActionResult> Get(int id)
         {
-            //Product pr = _context.Products.FirstOrDefault(p => p.ProductColors.Where(pc => !pc.IsAvailableColor).Any());
             Product product = await _context.Products
                .Include(x=>x.Brand).Include(x=>x.SubCategory).Include(x=>x.ProductSizes).ThenInclude(x=>x.Size)
                 .Include(x=>x.ProductColors).ThenInclude(x=>x.Color).Include(x=>x.ProductPhotos)
                 .FirstOrDefaultAsync(x => x.Id == id);
 
-            #region CheckCategoryNotFound
+            #region CheckProductNotFound
             if (product == null)
                 return NotFound();
             #endregion
@@ -123,7 +122,7 @@ namespace Online_Shopping.Api.Manage.Controllers
             List<Product> products = await _context.Products.
                 Include(x => x.Brand).Include(x => x.SubCategory).Include(x => x.ProductSizes).ThenInclude(x => x.Size)
                 .Include(x => x.ProductColors).ThenInclude(x => x.Color).Include(x => x.ProductPhotos)
-                .Skip((page - 1) * 10).Take(10).ToListAsync();
+                .Skip((page - 1) * 10).Take(10).OrderByDescending(x=>x.CreatedAt).ToListAsync();
 
             foreach (var product in products)
             {
