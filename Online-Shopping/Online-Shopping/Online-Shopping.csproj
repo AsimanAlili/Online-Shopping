@@ -20,6 +20,7 @@
     <Folder Include="wwwroot\uploads\admins\" />
     <Folder Include="wwwroot\uploads\categories\" />
     <Folder Include="wwwroot\uploads\blogs\" />
+    <Folder Include="wwwroot\uploads\discounts\" />
     <Folder Include="wwwroot\uploads\sliders\" />
     <Folder Include="wwwroot\uploads\products\" />
   </ItemGroup>

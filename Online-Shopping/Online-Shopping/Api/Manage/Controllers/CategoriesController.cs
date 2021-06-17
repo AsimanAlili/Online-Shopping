@@ -40,6 +40,9 @@ namespace Online_Shopping.Api.Manage.Controllers
             if (await _context.Categories.AnyAsync(x => x.Order == createDto.Order))
                 return Conflict($"Category Already exist by order {createDto.Order}");
             #endregion
+
+            Category category = _mapper.Map<Category>(createDto);
+
             #region CheckFile
             if (createDto.File != null)
             {
@@ -58,11 +61,10 @@ namespace Online_Shopping.Api.Manage.Controllers
 
                 string filename = FileManagerHelper.Save(_env.WebRootPath, "uploads/categories", createDto.File);
 
-                createDto.Photo = filename;
+                category.Photo = filename;
             }
             #endregion
 
-            Category category = _mapper.Map<Category>(createDto);
             category.CreatedAt = DateTime.UtcNow.AddHours(4);
             category.ModifiedAt = DateTime.UtcNow.AddHours(4);
 

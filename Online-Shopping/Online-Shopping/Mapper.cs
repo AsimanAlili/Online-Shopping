@@ -19,7 +19,7 @@ namespace Online_Shopping
             CreateMap<Category, CategoryItemDto>();
             #endregion
 
-            #region SubCategoryMapper
+            #region SubCategoriesMapper
             CreateMap<SubCategoryCreateDto, SubCategory>();
             CreateMap<Category, CategoryInSubDto>();
             CreateMap<SubCategory, SubCategoryGetDto>();
@@ -27,31 +27,31 @@ namespace Online_Shopping
                 .ForMember(dest => dest.CategoryName, from => from.MapFrom(x => x.Category.Name));
             #endregion
 
-            #region TagMapper
+            #region TagsMapper
             CreateMap<TagCreateDto, Tag>();
             CreateMap<Tag,TagGetDto>();
             CreateMap<Tag,TagItemDto>();
             #endregion
 
-            #region BrandMapper
+            #region BrandsMapper
             CreateMap<BrandCreateDto, Brand>();
             CreateMap<Brand, BrandGetDto>();
             CreateMap<Brand, BrandItemDto>();
             #endregion
 
-            #region SizeMapper
+            #region SizesMapper
             CreateMap<SizeCreateDto, Size>();
             CreateMap<Size, SizeGetDto>();
             CreateMap<Size, SizeItemDto>();
             #endregion
 
-            #region ColorMapper
+            #region ColorsMapper
             CreateMap<ColorCreateDto, Color>();
             CreateMap<Color, ColorGetDto>();
             CreateMap<Color, ColorItemDto>();
             #endregion
 
-            #region ProductMapper
+            #region ProductsMapper
             CreateMap<ProductCreateDto, Product>()
                .ForMember(dest => dest.ProductColors, from => from.MapFrom(x => x.ProductColors));
             CreateMap<ProductColorDto, ProductColor>();
@@ -79,15 +79,22 @@ namespace Online_Shopping
 
             #region OrdersMapper
             CreateMap<OrderCreateDto, Order>();
+            CreateMap<AppUser, AppUserInOrderDto>();
+            CreateMap<Product, ProductInOrderDto>();
+            CreateMap<Order, OrderGetDto>();
+            CreateMap<Order, OrderItemDto>()
+                .ForMember(dest => dest.AppUserFullName, from => from.MapFrom(x => x.AppUser.FullName))
+                .ForMember(dest => dest.ProductName, from => from.MapFrom(x => x.Product.Name));
+
             #endregion
 
-            #region BlogCategoryMapper
+            #region BlogCategoriesMapper
             CreateMap<BlogCategoryCreateDto, BlogCategory>();
             CreateMap<BlogCategory, BlogCategoryGetDto>();
             CreateMap<BlogCategory, BlogCategoryItemDto>();
             #endregion
 
-            #region BlogMapper
+            #region BlogsMapper
             CreateMap<BlogCreateDto,Blog>();
             CreateMap<BlogTagDto,BlogTag>();
             CreateMap<Blog, BlogGetDto>();
@@ -103,6 +110,17 @@ namespace Online_Shopping
             CreateMap<FeatureCreateDto, Feature>();
             CreateMap<Feature, FeatureGetDto>();
             CreateMap<Feature, FeatureItemDto>();
+            #endregion
+
+            #region DiscountsMapper
+            CreateMap<DiscountCreateDto, Discount>();
+            CreateMap<Discount, DiscountGetDto>();
+            CreateMap<Discount, DiscountItemDto>();
+            #endregion
+
+            #region ContactsMapper
+            CreateMap<ContactCreateDto, Contact>();
+            CreateMap<Contact, ContactGetDto>();
             #endregion
 
         }

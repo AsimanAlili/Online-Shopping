@@ -29,6 +29,8 @@ namespace Online_Shopping.Data
         public DbSet<BlogTag> BlogTags { get; set; }
         public DbSet<Blog> Blogs { get; set; }
         public DbSet<Feature> Features { get; set; }
+        public DbSet<Discount> Discounts { get; set; }
+        public DbSet<Contact> Contacts { get; set; }
 
         protected override void OnModelCreating(ModelBuilder builder)
         {
@@ -49,6 +51,8 @@ namespace Online_Shopping.Data
             builder.ApplyConfiguration(new BlogTagConfiguration());
             builder.ApplyConfiguration(new BlogConfiguration());
             builder.ApplyConfiguration(new FeatureConfiguration());
+            builder.ApplyConfiguration(new DiscountConfiguration());
+            builder.ApplyConfiguration(new ContactConfiguration());
             base.OnModelCreating(builder);
         }
     }
