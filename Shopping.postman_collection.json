@@ -1,0 +1,2408 @@
+{
+	"info": {
+		"_postman_id": "83a2fb84-a38a-4733-854c-bc312e1c7a07",
+		"name": "Shopping",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Manage",
+			"item": [
+				{
+					"name": "Accounts",
+					"item": [
+						{
+							"name": "Login",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "eyJodHRwOi8vc2NoZW1hcy54bWxzb2FwLm9yZy93cy8yMDA1LzA1L2lkZW50aXR5L2NsYWltcy9uYW1laWRlbnRpZmllciI6ImVjYTljZmZlLWMzZWEtNDE1Yy1iNDA5LTJkY2E4ODQ1MGE0NCIsImh0dHA6Ly9zY2hlbWFzLnhtbHNvYXAub3JnL3dzLzIwMDUvMDUvaWRlbnRpdHkvY2xhaW1zL25hbWUiOiJTdXBlckFkbWluIiwic3ViIjoiZWNhOWNmZmUtYzNlYS00MTVjLWI0MDktMmRjYTg4NDUwYTQ0IiwianRpIjoiMjhkOGQ0ODYtOTEwYi00NjMzLTgzMDEtYzQ3MDkxODc4Y2U4IiwiaHR0cDovL3NjaGVtYXMubWljcm9zb2Z0LmNvbS93cy8yMDA4LzA2L2lkZW50aXR5L2NsYWltcy9yb2xlIjoiQWRtaW4iLCJleHAiOjE2MTk0Mjk0NTAsImlzcyI6Imh0dHBzOi8vbG9jYWxob3N0OjQ0MzUxIiwiYXVkIjoiaHR0cHM6Ly9sb2NhbGhvc3Q6NDQzNTEifQ.ER1x9UQHBaYO4GyCtlUmOqu_SK6pg7lhLZbQt_MMRpY",
+											"type": "string"
+										}
+									]
+								},
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"UserName\":\"SuperAdmin\",\r\n    \"Password\":\"Admin123\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{shopping}}manage/accounts/login",
+									"host": [
+										"{{shopping}}manage"
+									],
+									"path": [
+										"accounts",
+										"login"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Edit User",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJodHRwOi8vc2NoZW1hcy54bWxzb2FwLm9yZy93cy8yMDA1LzA1L2lkZW50aXR5L2NsYWltcy9uYW1laWRlbnRpZmllciI6IjliZTY4MDcyLWU4NGMtNDQyOS04YWJkLWZiODhkY2Y4NmI3OSIsImh0dHA6Ly9zY2hlbWFzLnhtbHNvYXAub3JnL3dzLzIwMDUvMDUvaWRlbnRpdHkvY2xhaW1zL25hbWUiOiJTdXBlckFkbWluIiwic3ViIjoiOWJlNjgwNzItZTg0Yy00NDI5LThhYmQtZmI4OGRjZjg2Yjc5IiwianRpIjoiNDc1ZWJmOWMtNmE1NS00YzgxLTliNzYtYWE5YmU3ZTgzNjdiIiwiaHR0cDovL3NjaGVtYXMubWljcm9zb2Z0LmNvbS93cy8yMDA4LzA2L2lkZW50aXR5L2NsYWltcy9yb2xlIjoiQWRtaW4iLCJleHAiOjE2MjYyODE4MTMsImlzcyI6Imh0dHBzOi8vbG9jYWxob3N0OjQ0MzQ0IiwiYXVkIjoiaHR0cHM6Ly9sb2NhbGhvc3Q6NDQzNDQifQ.dJKaVRBFbNgaxhXtEygFoqiZk15z35fZWt8LZIaIglM",
+											"type": "string"
+										}
+									]
+								},
+								"method": "PUT",
+								"header": [],
+								"body": {
+									"mode": "formdata",
+									"formdata": [
+										{
+											"key": "File",
+											"type": "file",
+											"src": "/C:/Users/HP/Desktop/download.jpg"
+										},
+										{
+											"key": "UserName",
+											"value": "SuperAdmin",
+											"type": "text"
+										},
+										{
+											"key": "PhoneNumber",
+											"value": "+994552552525",
+											"type": "text"
+										},
+										{
+											"key": "CurrentPassword",
+											"value": "Admin1234",
+											"type": "text"
+										},
+										{
+											"key": "Password",
+											"value": "Admin123",
+											"type": "text"
+										},
+										{
+											"key": "ConfirmPassword",
+											"value": "Admin123",
+											"type": "text"
+										}
+									]
+								},
+								"url": {
+									"raw": "{{shopping}}manage/accounts/edit",
+									"host": [
+										"{{shopping}}manage"
+									],
+									"path": [
+										"accounts",
+										"edit"
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "Categories",
+					"item": [
+						{
+							"name": "Create",
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "formdata",
+									"formdata": [
+										{
+											"key": "File",
+											"type": "file",
+											"src": "/C:/Users/HP/Desktop/download.jpg"
+										},
+										{
+											"key": "Name",
+											"value": "Toyss",
+											"type": "text"
+										},
+										{
+											"key": "Order",
+											"value": "5",
+											"type": "text"
+										},
+										{
+											"key": "Desc",
+											"value": "categoryadaki oyuncaqlar",
+											"type": "text"
+										}
+									]
+								},
+								"url": {
+									"raw": "{{shopping}}manage/categories/create",
+									"host": [
+										"{{shopping}}manage"
+									],
+									"path": [
+										"categories",
+										"create"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Get",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{shopping}}manage/categories/2",
+									"host": [
+										"{{shopping}}manage"
+									],
+									"path": [
+										"categories",
+										"2"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "GetAll",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{shopping}}manage/categories/all",
+									"host": [
+										"{{shopping}}manage"
+									],
+									"path": [
+										"categories",
+										"all"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Update",
+							"request": {
+								"method": "PUT",
+								"header": [],
+								"body": {
+									"mode": "formdata",
+									"formdata": [
+										{
+											"key": "File",
+											"type": "file",
+											"src": "/C:/Users/HP/Desktop/logo-4.png"
+										},
+										{
+											"key": "Name",
+											"value": "Toyss",
+											"type": "text"
+										},
+										{
+											"key": "Order",
+											"value": "5",
+											"type": "text"
+										},
+										{
+											"key": "Desc",
+											"value": "hsjdsnjd",
+											"type": "text"
+										}
+									]
+								},
+								"url": {
+									"raw": "{{shopping}}manage/categories/6",
+									"host": [
+										"{{shopping}}manage"
+									],
+									"path": [
+										"categories",
+										"6"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "GetAllPage",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{shopping}}manage/categories",
+									"host": [
+										"{{shopping}}manage"
+									],
+									"path": [
+										"categories"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Delete",
+							"request": {
+								"method": "DELETE",
+								"header": [],
+								"url": {
+									"raw": "{{shopping}}manage/categories/3",
+									"host": [
+										"{{shopping}}manage"
+									],
+									"path": [
+										"categories",
+										"3"
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "Discounts",
+					"item": [
+						{
+							"name": "Create",
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "formdata",
+									"formdata": [
+										{
+											"key": "File",
+											"type": "file",
+											"src": "/C:/Users/HP/Desktop/logo-4.png"
+										},
+										{
+											"key": "Title",
+											"value": "Toyss",
+											"type": "text"
+										},
+										{
+											"key": "SubTitle",
+											"value": "djdj",
+											"type": "text"
+										},
+										{
+											"key": "SaleTitle",
+											"value": "categoryadaki oyuncaqlar",
+											"type": "text"
+										},
+										{
+											"key": "RedirectUrl",
+											"value": "www.com",
+											"type": "text"
+										},
+										{
+											"key": "DiscountTime",
+											"value": "2021-06-17",
+											"type": "text"
+										}
+									]
+								},
+								"url": {
+									"raw": "{{shopping}}manage/discounts/create",
+									"host": [
+										"{{shopping}}manage"
+									],
+									"path": [
+										"discounts",
+										"create"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Update",
+							"request": {
+								"method": "PUT",
+								"header": [],
+								"body": {
+									"mode": "formdata",
+									"formdata": [
+										{
+											"key": "File",
+											"type": "file",
+											"src": "/C:/Users/HP/Desktop/logo-4.png"
+										},
+										{
+											"key": "Title",
+											"value": "Toyss",
+											"type": "text"
+										},
+										{
+											"key": "SubTitle",
+											"value": "djdj",
+											"type": "text"
+										},
+										{
+											"key": "SaleTitle",
+											"value": "categoryadaki oyuncaqlars",
+											"type": "text"
+										},
+										{
+											"key": "RedirectUrl",
+											"value": "www.com",
+											"type": "text"
+										},
+										{
+											"key": "DiscountTime",
+											"value": "2021-06-17",
+											"type": "text"
+										}
+									]
+								},
+								"url": {
+									"raw": "{{shopping}}manage/discounts/1",
+									"host": [
+										"{{shopping}}manage"
+									],
+									"path": [
+										"discounts",
+										"1"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Get",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{shopping}}manage/discounts/1",
+									"host": [
+										"{{shopping}}manage"
+									],
+									"path": [
+										"discounts",
+										"1"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "GetAll",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{shopping}}manage/discounts/all",
+									"host": [
+										"{{shopping}}manage"
+									],
+									"path": [
+										"discounts",
+										"all"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "GetAllPage",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{shopping}}manage/discounts",
+									"host": [
+										"{{shopping}}manage"
+									],
+									"path": [
+										"discounts"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Delete",
+							"request": {
+								"method": "DELETE",
+								"header": [],
+								"url": {
+									"raw": "{{shopping}}manage/discounts/2",
+									"host": [
+										"{{shopping}}manage"
+									],
+									"path": [
+										"discounts",
+										"2"
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "Blogs",
+					"item": [
+						{
+							"name": "Create",
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "formdata",
+									"formdata": [
+										{
+											"key": "File",
+											"type": "file",
+											"src": "/C:/Users/HP/Desktop/logo-4.png"
+										},
+										{
+											"key": "Title",
+											"value": "Being seenss",
+											"type": "text"
+										},
+										{
+											"key": "FullName",
+											"value": "Aisha joi",
+											"type": "text"
+										},
+										{
+											"key": "Desc",
+											"value": "bloglarroyuncaqlar",
+											"type": "text"
+										},
+										{
+											"key": "BlogCategoryId",
+											"value": "2",
+											"type": "text"
+										},
+										{
+											"key": "BlogTags[0][TagId]",
+											"value": "2",
+											"type": "text"
+										}
+									]
+								},
+								"url": {
+									"raw": "{{shopping}}manage/blogs/create",
+									"host": [
+										"{{shopping}}manage"
+									],
+									"path": [
+										"blogs",
+										"create"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Update",
+							"request": {
+								"method": "PUT",
+								"header": [],
+								"body": {
+									"mode": "formdata",
+									"formdata": [
+										{
+											"key": "File",
+											"type": "file",
+											"src": "/C:/Users/HP/Desktop/download.jpg"
+										},
+										{
+											"key": "Title",
+											"value": "Being seendd",
+											"type": "text"
+										},
+										{
+											"key": "FullName",
+											"value": "Aisha joi",
+											"type": "text"
+										},
+										{
+											"key": "Desc",
+											"value": "bloglarroyuncaqlar",
+											"type": "text"
+										},
+										{
+											"key": "BlogCategoryId",
+											"value": "2",
+											"type": "text"
+										},
+										{
+											"key": "BlogTags[0][TagId]",
+											"value": "2",
+											"type": "text"
+										}
+									]
+								},
+								"url": {
+									"raw": "{{shopping}}manage/blogs/3",
+									"host": [
+										"{{shopping}}manage"
+									],
+									"path": [
+										"blogs",
+										"3"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Get",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{shopping}}manage/blogs/3",
+									"host": [
+										"{{shopping}}manage"
+									],
+									"path": [
+										"blogs",
+										"3"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "GetAllPage",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{shopping}}manage/blogs",
+									"host": [
+										"{{shopping}}manage"
+									],
+									"path": [
+										"blogs"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Delete",
+							"request": {
+								"method": "DELETE",
+								"header": [],
+								"url": {
+									"raw": "{{shopping}}manage/blogs/1",
+									"host": [
+										"{{shopping}}manage"
+									],
+									"path": [
+										"blogs",
+										"1"
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "Sliders",
+					"item": [
+						{
+							"name": "Create",
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "formdata",
+									"formdata": [
+										{
+											"key": "File",
+											"type": "file",
+											"src": "/C:/Users/HP/Desktop/logo-4.png"
+										},
+										{
+											"key": "Title",
+											"value": "Toyss",
+											"type": "text"
+										},
+										{
+											"key": "Order",
+											"value": "2",
+											"type": "text"
+										},
+										{
+											"key": "Text",
+											"value": "categoryadaki oyuncaqlar",
+											"type": "text"
+										},
+										{
+											"key": "RedirectUrl",
+											"value": "",
+											"type": "text"
+										}
+									]
+								},
+								"url": {
+									"raw": "{{shopping}}manage/sliders/create",
+									"host": [
+										"{{shopping}}manage"
+									],
+									"path": [
+										"sliders",
+										"create"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Get",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{shopping}}manage/sliders/2",
+									"host": [
+										"{{shopping}}manage"
+									],
+									"path": [
+										"sliders",
+										"2"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "GetAll",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{shopping}}manage/sliders/all",
+									"host": [
+										"{{shopping}}manage"
+									],
+									"path": [
+										"sliders",
+										"all"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Update",
+							"request": {
+								"method": "PUT",
+								"header": [],
+								"body": {
+									"mode": "formdata",
+									"formdata": [
+										{
+											"key": "File",
+											"type": "file",
+											"src": "/C:/Users/HP/Desktop/logo-4.png"
+										},
+										{
+											"key": "Title",
+											"value": "Toyss",
+											"type": "text"
+										},
+										{
+											"key": "Order",
+											"value": "5",
+											"type": "text"
+										},
+										{
+											"key": "Text",
+											"value": "hsjdsnjd",
+											"type": "text"
+										},
+										{
+											"key": "RedirectUrl",
+											"value": "sas",
+											"type": "text"
+										}
+									]
+								},
+								"url": {
+									"raw": "{{shopping}}manage/sliders/2",
+									"host": [
+										"{{shopping}}manage"
+									],
+									"path": [
+										"sliders",
+										"2"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "GetAllPage",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{shopping}}manage/sliders",
+									"host": [
+										"{{shopping}}manage"
+									],
+									"path": [
+										"sliders"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Delete",
+							"request": {
+								"method": "DELETE",
+								"header": [],
+								"url": {
+									"raw": "{{shopping}}manage/sliders/1",
+									"host": [
+										"{{shopping}}manage"
+									],
+									"path": [
+										"sliders",
+										"1"
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "Sizes",
+					"item": [
+						{
+							"name": "Create",
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"Name\":\"S\",\r\n    \"Order\":2\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{shopping}}manage/sizes/create",
+									"host": [
+										"{{shopping}}manage"
+									],
+									"path": [
+										"sizes",
+										"create"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Get",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{shopping}}manage/sizes/1",
+									"host": [
+										"{{shopping}}manage"
+									],
+									"path": [
+										"sizes",
+										"1"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "GetAll",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{shopping}}manage/sizes/all",
+									"host": [
+										"{{shopping}}manage"
+									],
+									"path": [
+										"sizes",
+										"all"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Update",
+							"request": {
+								"method": "PUT",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"Name\":\"Women\",\r\n    \"Order\":4\r\n\r\n\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{shopping}}manage/sizes/3",
+									"host": [
+										"{{shopping}}manage"
+									],
+									"path": [
+										"sizes",
+										"3"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "GetAllPage",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{shopping}}manage/sizes",
+									"host": [
+										"{{shopping}}manage"
+									],
+									"path": [
+										"sizes"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Delete",
+							"request": {
+								"method": "DELETE",
+								"header": [],
+								"url": {
+									"raw": "{{shopping}}manage/sizes/1",
+									"host": [
+										"{{shopping}}manage"
+									],
+									"path": [
+										"sizes",
+										"1"
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "Features",
+					"item": [
+						{
+							"name": "Create",
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"Title\":\"Shiing\",\r\n    \"SubTitle\":\"Free Shipsdsdsdping\",\r\n    \"Icon\":\"ing\",\r\n    \"Order\":3\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{shopping}}manage/features/create",
+									"host": [
+										"{{shopping}}manage"
+									],
+									"path": [
+										"features",
+										"create"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Update",
+							"request": {
+								"method": "PUT",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n   \"Title\":\"Shiing\",\r\n    \"SubTitle\":\"Free Shipsdsdsdping\",\r\n    \"Icon\":\"ing\",\r\n    \"Order\":3\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{shopping}}manage/features/3",
+									"host": [
+										"{{shopping}}manage"
+									],
+									"path": [
+										"features",
+										"3"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Get",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{shopping}}manage/features/1",
+									"host": [
+										"{{shopping}}manage"
+									],
+									"path": [
+										"features",
+										"1"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "GetAll",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{shopping}}manage/features/all",
+									"host": [
+										"{{shopping}}manage"
+									],
+									"path": [
+										"features",
+										"all"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "GetAllPage",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{shopping}}manage/features",
+									"host": [
+										"{{shopping}}manage"
+									],
+									"path": [
+										"features"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Delete",
+							"request": {
+								"method": "DELETE",
+								"header": [],
+								"url": {
+									"raw": "{{shopping}}manage/features/1",
+									"host": [
+										"{{shopping}}manage"
+									],
+									"path": [
+										"features",
+										"1"
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "BlogCategories",
+					"item": [
+						{
+							"name": "Create",
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"Name\":\"SaModa\",\r\n    \"Order\":2\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{shopping}}manage/blogcategories/create",
+									"host": [
+										"{{shopping}}manage"
+									],
+									"path": [
+										"blogcategories",
+										"create"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Get",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{shopping}}manage/blogcategories/1",
+									"host": [
+										"{{shopping}}manage"
+									],
+									"path": [
+										"blogcategories",
+										"1"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "GetAll",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{shopping}}manage/blogcategories/all",
+									"host": [
+										"{{shopping}}manage"
+									],
+									"path": [
+										"blogcategories",
+										"all"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Update",
+							"request": {
+								"method": "PUT",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"Name\":\"Women\",\r\n    \"Order\":4\r\n\r\n\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{shopping}}manage/blogcategories/1",
+									"host": [
+										"{{shopping}}manage"
+									],
+									"path": [
+										"blogcategories",
+										"1"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "GetAllPage",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{shopping}}manage/blogcategories",
+									"host": [
+										"{{shopping}}manage"
+									],
+									"path": [
+										"blogcategories"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Delete",
+							"request": {
+								"method": "DELETE",
+								"header": [],
+								"url": {
+									"raw": "{{shopping}}manage/blogcategories/1",
+									"host": [
+										"{{shopping}}manage"
+									],
+									"path": [
+										"blogcategories",
+										"1"
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "Tags",
+					"item": [
+						{
+							"name": "Create",
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"Name\":\"ss\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{shopping}}manage/tags/create",
+									"host": [
+										"{{shopping}}manage"
+									],
+									"path": [
+										"tags",
+										"create"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Get",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{shopping}}manage/tags/2",
+									"host": [
+										"{{shopping}}manage"
+									],
+									"path": [
+										"tags",
+										"2"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "GetAll",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{shopping}}manage/tags/all",
+									"host": [
+										"{{shopping}}manage"
+									],
+									"path": [
+										"tags",
+										"all"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Update",
+							"request": {
+								"method": "PUT",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"Name\":\"Fashion\"\r\n\r\n\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{shopping}}manage/tags/2",
+									"host": [
+										"{{shopping}}manage"
+									],
+									"path": [
+										"tags",
+										"2"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "GetAllPage",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{shopping}}manage/tags",
+									"host": [
+										"{{shopping}}manage"
+									],
+									"path": [
+										"tags"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Delete",
+							"request": {
+								"method": "DELETE",
+								"header": [],
+								"url": {
+									"raw": "{{shopping}}manage/tags/3",
+									"host": [
+										"{{shopping}}manage"
+									],
+									"path": [
+										"tags",
+										"3"
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "Brands",
+					"item": [
+						{
+							"name": "Create",
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"Name\":\"Colin's\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{shopping}}manage/brands/create",
+									"host": [
+										"{{shopping}}manage"
+									],
+									"path": [
+										"brands",
+										"create"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Get",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{shopping}}manage/brands/2",
+									"host": [
+										"{{shopping}}manage"
+									],
+									"path": [
+										"brands",
+										"2"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "GetAll",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{shopping}}manage/brands/all",
+									"host": [
+										"{{shopping}}manage"
+									],
+									"path": [
+										"brands",
+										"all"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Update",
+							"request": {
+								"method": "PUT",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"Name\":\"Mavi\"\r\n\r\n\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{shopping}}manage/brands/2",
+									"host": [
+										"{{shopping}}manage"
+									],
+									"path": [
+										"brands",
+										"2"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "GetAllPage",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{shopping}}manage/brands",
+									"host": [
+										"{{shopping}}manage"
+									],
+									"path": [
+										"brands"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Delete",
+							"request": {
+								"method": "DELETE",
+								"header": [],
+								"url": {
+									"raw": "{{shopping}}manage/brands/3",
+									"host": [
+										"{{shopping}}manage"
+									],
+									"path": [
+										"brands",
+										"3"
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "Products",
+					"item": [
+						{
+							"name": "Create",
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "formdata",
+									"formdata": [
+										{
+											"key": "Name",
+											"value": "Donam",
+											"type": "text"
+										},
+										{
+											"key": "Desc",
+											"value": "uzunqol",
+											"type": "text"
+										},
+										{
+											"key": "Slug",
+											"value": "koynekdaGf",
+											"type": "text"
+										},
+										{
+											"key": "Specification",
+											"value": "mavi koynek",
+											"type": "text"
+										},
+										{
+											"key": "BrandId",
+											"value": "1",
+											"type": "text"
+										},
+										{
+											"key": "SubCategoryId",
+											"value": "1",
+											"type": "text"
+										},
+										{
+											"key": "Price",
+											"value": "62",
+											"type": "text"
+										},
+										{
+											"key": "ProducingPrice",
+											"value": "20",
+											"type": "text"
+										},
+										{
+											"key": "DiscountedPrice",
+											"value": "55",
+											"type": "text"
+										},
+										{
+											"key": "DiscountPercent",
+											"value": "20",
+											"type": "text"
+										},
+										{
+											"key": "IsNew",
+											"value": "false",
+											"type": "text"
+										},
+										{
+											"key": "IsHotTrend",
+											"value": "false",
+											"type": "text"
+										},
+										{
+											"key": "IsBestSeller",
+											"value": "false",
+											"type": "text"
+										},
+										{
+											"key": "IsFeature",
+											"value": "false",
+											"type": "text"
+										},
+										{
+											"key": "Gender",
+											"value": "1",
+											"type": "text"
+										},
+										{
+											"key": "Files",
+											"type": "file",
+											"src": "/C:/Users/HP/Desktop/logo-4.png"
+										},
+										{
+											"key": "ProductSizes[0][SizeId]",
+											"value": "5",
+											"type": "text"
+										},
+										{
+											"key": "ProductColors[0][ColorId]",
+											"value": "1",
+											"type": "text"
+										},
+										{
+											"key": "ProductColors[1][colorId]",
+											"value": "2",
+											"type": "text"
+										},
+										{
+											"key": "ProductColors[0][Count]",
+											"value": "3",
+											"type": "text"
+										}
+									]
+								},
+								"url": {
+									"raw": "{{shopping}}manage/products/create",
+									"host": [
+										"{{shopping}}manage"
+									],
+									"path": [
+										"products",
+										"create"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Update",
+							"request": {
+								"method": "PUT",
+								"header": [],
+								"body": {
+									"mode": "formdata",
+									"formdata": [
+										{
+											"key": "Name",
+											"value": "KoyddnedsaskGfssssss",
+											"type": "text"
+										},
+										{
+											"key": "Desc",
+											"value": "uzunqold",
+											"type": "text"
+										},
+										{
+											"key": "Slug",
+											"value": "koynekdaGf",
+											"type": "text"
+										},
+										{
+											"key": "Specification",
+											"value": "mavi koynek",
+											"type": "text"
+										},
+										{
+											"key": "BrandId",
+											"value": "1",
+											"type": "text"
+										},
+										{
+											"key": "SubCategoryId",
+											"value": "1",
+											"type": "text"
+										},
+										{
+											"key": "Price",
+											"value": "62",
+											"type": "text"
+										},
+										{
+											"key": "ProducingPrice",
+											"value": "20",
+											"type": "text"
+										},
+										{
+											"key": "IsAvailable",
+											"value": "true",
+											"type": "text"
+										},
+										{
+											"key": "DiscountPercent",
+											"value": "20",
+											"type": "text"
+										},
+										{
+											"key": "IsNew",
+											"value": "false",
+											"type": "text"
+										},
+										{
+											"key": "IsHotTrend",
+											"value": "false",
+											"type": "text"
+										},
+										{
+											"key": "IsBestSeller",
+											"value": "false",
+											"type": "text"
+										},
+										{
+											"key": "IsFeature",
+											"value": "false",
+											"type": "text"
+										},
+										{
+											"key": "Gender",
+											"value": "1",
+											"type": "text"
+										},
+										{
+											"key": "Files",
+											"type": "file",
+											"src": "/C:/Users/HP/Desktop/download.jpg"
+										},
+										{
+											"key": "ProductSizes[0][SizeId]",
+											"value": "5",
+											"type": "text"
+										},
+										{
+											"key": "ProductColors[0][ColorId]",
+											"value": "2",
+											"type": "text"
+										},
+										{
+											"key": "ProductColors[1].ColorId",
+											"value": "4",
+											"type": "text"
+										},
+										{
+											"key": "ProductColor[1][IsAvailableColor]",
+											"value": "True",
+											"type": "text"
+										},
+										{
+											"key": "FileIds[0]",
+											"value": "26",
+											"type": "text"
+										}
+									]
+								},
+								"url": {
+									"raw": "{{shopping}}manage/products/26",
+									"host": [
+										"{{shopping}}manage"
+									],
+									"path": [
+										"products",
+										"26"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Get",
+							"protocolProfileBehavior": {
+								"disableBodyPruning": true
+							},
+							"request": {
+								"method": "GET",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": ""
+								},
+								"url": {
+									"raw": "{{shopping}}manage/products/26",
+									"host": [
+										"{{shopping}}manage"
+									],
+									"path": [
+										"products",
+										"26"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "GetAllPage",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{shopping}}manage/products",
+									"host": [
+										"{{shopping}}manage"
+									],
+									"path": [
+										"products"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Delete",
+							"request": {
+								"method": "DELETE",
+								"header": [],
+								"url": {
+									"raw": "{{shopping}}manage/products/20",
+									"host": [
+										"{{shopping}}manage"
+									],
+									"path": [
+										"products",
+										"20"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "ProductReviewGet",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{shopping}}manage/products/review/23",
+									"host": [
+										"{{shopping}}manage"
+									],
+									"path": [
+										"products",
+										"review",
+										"23"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "ProductReviewDelete",
+							"request": {
+								"method": "DELETE",
+								"header": [],
+								"url": {
+									"raw": "{{shopping}}manage/products/review/3",
+									"host": [
+										"{{shopping}}manage"
+									],
+									"path": [
+										"products",
+										"review",
+										"3"
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "Colors",
+					"item": [
+						{
+							"name": "Create",
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"Name\":\"ddddddd\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{shopping}}manage/colors/create",
+									"host": [
+										"{{shopping}}manage"
+									],
+									"path": [
+										"colors",
+										"create"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Get",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{shopping}}manage/colors/2",
+									"host": [
+										"{{shopping}}manage"
+									],
+									"path": [
+										"colors",
+										"2"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "GetAll",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{shopping}}manage/colors/all",
+									"host": [
+										"{{shopping}}manage"
+									],
+									"path": [
+										"colors",
+										"all"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Update",
+							"request": {
+								"method": "PUT",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"Name\":\"Green\"\r\n\r\n\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{shopping}}manage/colors/2",
+									"host": [
+										"{{shopping}}manage"
+									],
+									"path": [
+										"colors",
+										"2"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "GetAllPage",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{shopping}}manage/colors",
+									"host": [
+										"{{shopping}}manage"
+									],
+									"path": [
+										"colors"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Delete",
+							"request": {
+								"method": "DELETE",
+								"header": [],
+								"url": {
+									"raw": "{{shopping}}manage/colors/3",
+									"host": [
+										"{{shopping}}manage"
+									],
+									"path": [
+										"colors",
+										"3"
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "Orders",
+					"item": [
+						{
+							"name": "Get",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{shopping}}manage/orders/1",
+									"host": [
+										"{{shopping}}manage"
+									],
+									"path": [
+										"orders",
+										"1"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "UpdateStatus",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{shopping}}manage/orders/1",
+									"host": [
+										"{{shopping}}manage"
+									],
+									"path": [
+										"orders",
+										"1"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "GetAll",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{shopping}}manage/colors/all",
+									"host": [
+										"{{shopping}}manage"
+									],
+									"path": [
+										"colors",
+										"all"
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "Contact",
+					"item": [
+						{
+							"name": "Create",
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"Phone\":\"2525855\",\r\n    \"Address\":\"Baki\",\r\n    \"Support\":\"asasi@mail\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{shopping}}manage/contacts/create",
+									"host": [
+										"{{shopping}}manage"
+									],
+									"path": [
+										"contacts",
+										"create"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Get",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{shopping}}manage/contacts/1",
+									"host": [
+										"{{shopping}}manage"
+									],
+									"path": [
+										"contacts",
+										"1"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Update",
+							"request": {
+								"method": "PUT",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"Phone\":\"2525855\",\r\n    \"Address\":\"Baki kuc\",\r\n    \"Support\":\"asasi@mail\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{shopping}}manage/contacts/1",
+									"host": [
+										"{{shopping}}manage"
+									],
+									"path": [
+										"contacts",
+										"1"
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "SubCategories",
+					"item": [
+						{
+							"name": "Create",
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"Name\":\"Dresses\",\r\n    \"Order\":3,\r\n    \"CategoryId\":1\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{shopping}}manage/subcategories/create",
+									"host": [
+										"{{shopping}}manage"
+									],
+									"path": [
+										"subcategories",
+										"create"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Get",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{shopping}}manage/subcategories/2",
+									"host": [
+										"{{shopping}}manage"
+									],
+									"path": [
+										"subcategories",
+										"2"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "GetAll",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{shopping}}manage/subcategories/all",
+									"host": [
+										"{{shopping}}manage"
+									],
+									"path": [
+										"subcategories",
+										"all"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Update",
+							"request": {
+								"method": "PUT",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"Name\":\"Jeans\",\r\n    \"Order\":2,\r\n    \"CategoryId\":1\r\n\r\n\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{shopping}}manage/subcategories/3",
+									"host": [
+										"{{shopping}}manage"
+									],
+									"path": [
+										"subcategories",
+										"3"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "GetAllPage",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{shopping}}manage/subcategories",
+									"host": [
+										"{{shopping}}manage"
+									],
+									"path": [
+										"subcategories"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Delete",
+							"request": {
+								"method": "DELETE",
+								"header": [],
+								"url": {
+									"raw": "{{shopping}}manage/subcategories/3",
+									"host": [
+										"{{shopping}}manage"
+									],
+									"path": [
+										"subcategories",
+										"3"
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				}
+			]
+		},
+		{
+			"name": "Client",
+			"item": [
+				{
+					"name": "Accounts",
+					"item": [
+						{
+							"name": "Register",
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"FullName\":\"Asiman Alili\",\r\n    \"Email\":\"asimanalili@code.edu.az\",\r\n    \"Password\":\"Asiman123\",\r\n    \"ConfirmPassword\":\"Asiman123\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{shopping}}accounts/register",
+									"host": [
+										"{{shopping}}accounts"
+									],
+									"path": [
+										"register"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Login",
+							"request": {
+								"auth": {
+									"type": "noauth"
+								},
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"Email\":\"asimanalili@code.edu.az\",\r\n    \"Password\":\"Asiman1234\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{shopping}}accounts/login",
+									"host": [
+										"{{shopping}}accounts"
+									],
+									"path": [
+										"login"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Edit User",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJodHRwOi8vc2NoZW1hcy54bWxzb2FwLm9yZy93cy8yMDA1LzA1L2lkZW50aXR5L2NsYWltcy9uYW1laWRlbnRpZmllciI6ImY3MmQyMTFjLWE3OTEtNDAwNS04ZGJiLWFmMzEyNGJmZTM0YiIsImh0dHA6Ly9zY2hlbWFzLnhtbHNvYXAub3JnL3dzLzIwMDUvMDUvaWRlbnRpdHkvY2xhaW1zL25hbWUiOiJBc2ltYW45NCIsInN1YiI6ImY3MmQyMTFjLWE3OTEtNDAwNS04ZGJiLWFmMzEyNGJmZTM0YiIsImp0aSI6IjZjYjk0MWYyLWQ5YWItNDRmOC04Y2JkLWQ0NmYxMmZmZjdhOSIsImh0dHA6Ly9zY2hlbWFzLnhtbHNvYXAub3JnL3dzLzIwMDUvMDUvaWRlbnRpdHkvY2xhaW1zL2VtYWlsYWRkcmVzcyI6ImFzaW1hbmFsaWxpQGNvZGUuZWR1LmF6IiwiaHR0cDovL3NjaGVtYXMubWljcm9zb2Z0LmNvbS93cy8yMDA4LzA2L2lkZW50aXR5L2NsYWltcy9yb2xlIjoiTWVtYmVyIiwiZXhwIjoxNjI2MjcwNDk2LCJpc3MiOiJodHRwczovL2xvY2FsaG9zdDo0NDM0NCIsImF1ZCI6Imh0dHBzOi8vbG9jYWxob3N0OjQ0MzQ0In0.LUKxwey0VYuJrjwV_bx6tx5ufySaa6ZC8I8cM9wlvdQ",
+											"type": "string"
+										}
+									]
+								},
+								"method": "PUT",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"FullName\":\"Asiman Alili\",\r\n    \"UserName\":\"Asiman94\",\r\n    \"Email\":\"asimanalili@code.edu.az\",\r\n    \"PhoneNumber\":\"+994552525252\",\r\n    \"CurrentPassword\":\"Asiman1234\",\r\n    \"Password\":\"Asiman123\",\r\n    \"ConfirmPassword\":\"Asiman123\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{shopping}}accounts/edit",
+									"host": [
+										"{{shopping}}accounts"
+									],
+									"path": [
+										"edit"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Logout",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJodHRwOi8vc2NoZW1hcy54bWxzb2FwLm9yZy93cy8yMDA1LzA1L2lkZW50aXR5L2NsYWltcy9uYW1laWRlbnRpZmllciI6ImY3MmQyMTFjLWE3OTEtNDAwNS04ZGJiLWFmMzEyNGJmZTM0YiIsImh0dHA6Ly9zY2hlbWFzLnhtbHNvYXAub3JnL3dzLzIwMDUvMDUvaWRlbnRpdHkvY2xhaW1zL25hbWUiOiJBc2ltYW45NCIsInN1YiI6ImY3MmQyMTFjLWE3OTEtNDAwNS04ZGJiLWFmMzEyNGJmZTM0YiIsImp0aSI6Ijk0YjIzNmI5LWM2ZTYtNGY0Zi1hNzlkLTRlZjMwMjRkNTk1OCIsImh0dHA6Ly9zY2hlbWFzLnhtbHNvYXAub3JnL3dzLzIwMDUvMDUvaWRlbnRpdHkvY2xhaW1zL2VtYWlsYWRkcmVzcyI6ImFzaW1hbmFsaWxpQGNvZGUuZWR1LmF6IiwiaHR0cDovL3NjaGVtYXMubWljcm9zb2Z0LmNvbS93cy8yMDA4LzA2L2lkZW50aXR5L2NsYWltcy9yb2xlIjoiTWVtYmVyIiwiZXhwIjoxNjI2MzQ1ODUxLCJpc3MiOiJodHRwczovL2xvY2FsaG9zdDo0NDM0NCIsImF1ZCI6Imh0dHBzOi8vbG9jYWxob3N0OjQ0MzQ0In0.W4-zSFbbRmw_Uz091fq7JmBf7Hroc8EdHKFiakbA9B8",
+											"type": "string"
+										}
+									]
+								},
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{shopping}}accounts/logout",
+									"host": [
+										"{{shopping}}accounts"
+									],
+									"path": [
+										"logout"
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "Orders",
+					"item": [
+						{
+							"name": "Create",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJodHRwOi8vc2NoZW1hcy54bWxzb2FwLm9yZy93cy8yMDA1LzA1L2lkZW50aXR5L2NsYWltcy9uYW1laWRlbnRpZmllciI6ImRlNzAwNDU3LWQ5OTYtNDg2OC05ZmQzLTI1ZGIxNGRjOWU3NiIsImh0dHA6Ly9zY2hlbWFzLnhtbHNvYXAub3JnL3dzLzIwMDUvMDUvaWRlbnRpdHkvY2xhaW1zL25hbWUiOiJhc2ltYW5AY29kZS5lZHUuYXoiLCJzdWIiOiJkZTcwMDQ1Ny1kOTk2LTQ4NjgtOWZkMy0yNWRiMTRkYzllNzYiLCJqdGkiOiJiYTc3Y2Y4Mi05ZWUzLTRkMTktYTNkYy1iZjU2YjUzNTQyMjciLCJodHRwOi8vc2NoZW1hcy54bWxzb2FwLm9yZy93cy8yMDA1LzA1L2lkZW50aXR5L2NsYWltcy9lbWFpbGFkZHJlc3MiOiJhc2ltYW5AY29kZS5lZHUuYXoiLCJodHRwOi8vc2NoZW1hcy5taWNyb3NvZnQuY29tL3dzLzIwMDgvMDYvaWRlbnRpdHkvY2xhaW1zL3JvbGUiOiJNZW1iZXIiLCJleHAiOjE2MjAzNzk3NjEsImlzcyI6Imh0dHBzOi8vbG9jYWxob3N0OjQ0MzUxIiwiYXVkIjoiaHR0cHM6Ly9sb2NhbGhvc3Q6NDQzNTEifQ.e3MXVVkbGtFgJs9rqv7VjV9nvirYVRIWuLZCvrDJI3E",
+											"type": "string"
+										}
+									]
+								},
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n   \"Status\":0,\r\n    \"ProductId\":16,\r\n    \"AppUserId\":\"f72d211c-a791-4005-8dbb-af3124bfe34b\",\r\n    \"UserName\":\"Asiman94\"\r\n    \r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{shopping}}orders/create",
+									"host": [
+										"{{shopping}}orders"
+									],
+									"path": [
+										"create"
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "Products",
+					"item": [
+						{
+							"name": "ProductReviewCreate",
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"ProductId\":24,\r\n    \"Email\":\"asiman@12.com\",\r\n    \"FullName\":\"A.A\",\r\n    \"Rate\":2,\r\n    \"Message\":\"iwleyir!!\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{shopping}}products/review",
+									"host": [
+										"{{shopping}}products"
+									],
+									"path": [
+										"review"
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				}
+			]
+		}
+	]
+}
