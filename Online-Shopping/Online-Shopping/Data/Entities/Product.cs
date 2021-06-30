@@ -37,6 +37,7 @@ namespace Online_Shopping.Data.Entities
         public bool IsHotTrend { get; set; }
         public bool IsBestSeller { get; set; }
         public bool IsFeature{ get; set; }
+        public bool IsBookmarked { get; set; }
         public Gender Gender { get; set; }
         public Brand Brand { get; set; }
         public SubCategory SubCategory { get; set; }

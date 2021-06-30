@@ -14,7 +14,6 @@ namespace Online_Shopping.Api.Manage.DTOs
         public string Photo { get; set; }
         public string RedirectUrl { get; set; }
         public DateTime DiscountTime { get; set; }
-        public DateTime CreatedAt { get; set; }
-        public DateTime ModifiedAt { get; set; }
+       
     }
 }

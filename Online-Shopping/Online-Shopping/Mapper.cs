@@ -17,6 +17,10 @@ namespace Online_Shopping
             CreateMap<CategoryCreateDto, Category>();
             CreateMap<Category, CategoryGetDto>();
             CreateMap<Category, CategoryItemDto>();
+            CreateMap<Category, CategoryClientGetDto>();
+            CreateMap<Category, CategoryClientItemDto>();
+
+
             #endregion
 
             #region SubCategoriesMapper
@@ -69,6 +73,16 @@ namespace Online_Shopping
             CreateMap<Product, ProductItemDto>()
                 .ForMember(dest => dest.SubCategoryName, from => from.MapFrom(x => x.SubCategory.Name))
                 .ForMember(dest => dest.BrandName, from => from.MapFrom(x => x.Brand.Name));
+            CreateMap<Product, ProductFilterItemDto>();
+            CreateMap<Product, ProductSearchItemDto>()
+                .ForMember(dest => dest.BrandName, from => from.MapFrom(x => x.Brand.Name))
+                .ForMember(dest => dest.SubCategoryName, from => from.MapFrom(x => x.SubCategory.Name));
+            CreateMap<Product, ProductBookmarkDto>();
+
+
+
+
+
             #endregion
 
             #region SlidersMapper
@@ -104,6 +118,8 @@ namespace Online_Shopping
               .ForMember(dest => dest.TagName, from => from.MapFrom(x => x.Tag.Name));
             CreateMap<Blog, BlogItemDto>()
                 .ForMember(dest => dest.BlogCategoryName, from => from.MapFrom(x => x.BlogCategory.Name));
+            CreateMap<Blog, BlogClientItemDto>();
+
             #endregion
 
             #region FeaturesMapper

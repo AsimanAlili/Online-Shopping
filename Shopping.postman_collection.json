@@ -1951,8 +1951,17 @@
 						{
 							"name": "UpdateStatus",
 							"request": {
-								"method": "GET",
+								"method": "PUT",
 								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"Status\":1\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
 								"url": {
 									"raw": "{{shopping}}manage/orders/1",
 									"host": [
@@ -1972,13 +1981,12 @@
 								"method": "GET",
 								"header": [],
 								"url": {
-									"raw": "{{shopping}}manage/colors/all",
+									"raw": "{{shopping}}manage/orders",
 									"host": [
 										"{{shopping}}manage"
 									],
 									"path": [
-										"colors",
-										"all"
+										"orders"
 									]
 								}
 							},
@@ -2395,6 +2403,334 @@
 									],
 									"path": [
 										"review"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Filter",
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"SubCategoryId\":1\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{shopping}}products/filter",
+									"host": [
+										"{{shopping}}products"
+									],
+									"path": [
+										"filter"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Search",
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"Name\":\"o\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{shopping}}products/search",
+									"host": [
+										"{{shopping}}products"
+									],
+									"path": [
+										"search"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Bookmark",
+							"request": {
+								"method": "PUT",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"IsBookmarked\":true\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{shopping}}products/bookmark/16",
+									"host": [
+										"{{shopping}}products"
+									],
+									"path": [
+										"bookmark",
+										"16"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Get",
+							"protocolProfileBehavior": {
+								"disableBodyPruning": true
+							},
+							"request": {
+								"method": "GET",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": ""
+								},
+								"url": {
+									"raw": "{{shopping}}products/26",
+									"host": [
+										"{{shopping}}products"
+									],
+									"path": [
+										"26"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "GetAllPage",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{shopping}}products",
+									"host": [
+										"{{shopping}}products"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "GetAll",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{shopping}}products/all",
+									"host": [
+										"{{shopping}}products"
+									],
+									"path": [
+										"all"
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "Categories",
+					"item": [
+						{
+							"name": "Get",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{shopping}}categories/2",
+									"host": [
+										"{{shopping}}categories"
+									],
+									"path": [
+										"2"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "GetAll",
+							"protocolProfileBehavior": {
+								"disableBodyPruning": true
+							},
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJodHRwOi8vc2NoZW1hcy54bWxzb2FwLm9yZy93cy8yMDA1LzA1L2lkZW50aXR5L2NsYWltcy9uYW1laWRlbnRpZmllciI6ImRlNzAwNDU3LWQ5OTYtNDg2OC05ZmQzLTI1ZGIxNGRjOWU3NiIsImh0dHA6Ly9zY2hlbWFzLnhtbHNvYXAub3JnL3dzLzIwMDUvMDUvaWRlbnRpdHkvY2xhaW1zL25hbWUiOiJhc2ltYW5AY29kZS5lZHUuYXoiLCJzdWIiOiJkZTcwMDQ1Ny1kOTk2LTQ4NjgtOWZkMy0yNWRiMTRkYzllNzYiLCJqdGkiOiJiYTc3Y2Y4Mi05ZWUzLTRkMTktYTNkYy1iZjU2YjUzNTQyMjciLCJodHRwOi8vc2NoZW1hcy54bWxzb2FwLm9yZy93cy8yMDA1LzA1L2lkZW50aXR5L2NsYWltcy9lbWFpbGFkZHJlc3MiOiJhc2ltYW5AY29kZS5lZHUuYXoiLCJodHRwOi8vc2NoZW1hcy5taWNyb3NvZnQuY29tL3dzLzIwMDgvMDYvaWRlbnRpdHkvY2xhaW1zL3JvbGUiOiJNZW1iZXIiLCJleHAiOjE2MjAzNzk3NjEsImlzcyI6Imh0dHBzOi8vbG9jYWxob3N0OjQ0MzUxIiwiYXVkIjoiaHR0cHM6Ly9sb2NhbGhvc3Q6NDQzNTEifQ.e3MXVVkbGtFgJs9rqv7VjV9nvirYVRIWuLZCvrDJI3E",
+											"type": "string"
+										}
+									]
+								},
+								"method": "GET",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n   \"Status\":0,\r\n    \"ProductId\":16,\r\n    \"AppUserId\":\"f72d211c-a791-4005-8dbb-af3124bfe34b\",\r\n    \"UserName\":\"Asiman94\"\r\n    \r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{shopping}}categories/all",
+									"host": [
+										"{{shopping}}categories"
+									],
+									"path": [
+										"all"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "GetAllPage",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{shopping}}categories",
+									"host": [
+										"{{shopping}}categories"
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "Discounts",
+					"item": [
+						{
+							"name": "Get",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{shopping}}discounts/1",
+									"host": [
+										"{{shopping}}discounts"
+									],
+									"path": [
+										"1"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "GetAll",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{shopping}}discounts/all",
+									"host": [
+										"{{shopping}}discounts"
+									],
+									"path": [
+										"all"
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "Sliders",
+					"item": [
+						{
+							"name": "GetAll",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{shopping}}sliders/all",
+									"host": [
+										"{{shopping}}sliders"
+									],
+									"path": [
+										"all"
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "Blogs",
+					"item": [
+						{
+							"name": "Get",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{shopping}}blogs/3",
+									"host": [
+										"{{shopping}}blogs"
+									],
+									"path": [
+										"3"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "GetAllPage",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{shopping}}blogs",
+									"host": [
+										"{{shopping}}blogs"
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "Contacts",
+					"item": [
+						{
+							"name": "Get",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{shopping}}contacts/1",
+									"host": [
+										"{{shopping}}contacts"
+									],
+									"path": [
+										"1"
 									]
 								}
 							},
