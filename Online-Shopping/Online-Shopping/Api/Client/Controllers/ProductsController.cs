@@ -44,6 +44,10 @@ namespace Online_Shopping.Api.Client.Controllers
 
             List<ProductSize> ps = product.ProductSizes.Where(x => !x.IsAvailableSize).ToList();
             product.ProductSizes = ps;
+           
+            List<ProductPhoto> pp = product.ProductPhotos.OrderBy(x => x.Order).ToList();
+            product.ProductPhotos = pp;
+
 
 
 
@@ -69,6 +73,8 @@ namespace Online_Shopping.Api.Client.Controllers
                 product.ProductColors = pc;
                 List<ProductSize> ps = product.ProductSizes.Where(x => !x.IsAvailableSize).ToList();
                 product.ProductSizes = ps;
+                List<ProductPhoto> pp = product.ProductPhotos.Where(x => x.Order == 1).ToList();
+                product.ProductPhotos = pp;
             }
 
 
@@ -96,13 +102,15 @@ namespace Online_Shopping.Api.Client.Controllers
                 product.ProductColors = pc;
                 List<ProductSize> ps = product.ProductSizes.Where(x => !x.IsAvailableSize).ToList();
                 product.ProductSizes = ps;
+                List<ProductPhoto> pp = product.ProductPhotos.Where(x => x.Order == 1).ToList();
+                product.ProductPhotos = pp;
             }
             
             return Ok(_mapper.Map<List<ProductItemDto>>(products));
         }
         #endregion
         #region GetNew
-        [HttpGet("all")]
+        [HttpGet("new")]
         public async Task<IActionResult> GetNew()
         {
             List<Product> products = await _context.Products.
@@ -116,11 +124,80 @@ namespace Online_Shopping.Api.Client.Controllers
                 product.ProductColors = pc;
                 List<ProductSize> ps = product.ProductSizes.Where(x => !x.IsAvailableSize).ToList();
                 product.ProductSizes = ps;
+                List<ProductPhoto> pp = product.ProductPhotos.Where(x => x.Order == 1).ToList();
+                product.ProductPhotos = pp;
             }
 
-            return Ok(_mapper.Map<List<ProductItemDto>>(products));
+            return Ok(_mapper.Map<List<ProductListNewDto>>(products));
         }
         #endregion
+        #region GetNew
+        [HttpGet("trend")]
+        public async Task<IActionResult> GetTrend()
+        {
+            List<Product> products = await _context.Products.
+                Include(x => x.Brand).Include(x => x.SubCategory).Include(x => x.ProductSizes).ThenInclude(x => x.Size)
+                .Include(x => x.ProductColors).ThenInclude(x => x.Color).Include(x => x.ProductPhotos)
+                .Where(x => x.IsHotTrend).Take(3).OrderByDescending(x => x.CreatedAt).ToListAsync();
+
+            foreach (var product in products)
+            {
+                List<ProductColor> pc = product.ProductColors.Where(x => !x.IsAvailableColor).ToList();
+                product.ProductColors = pc;
+                List<ProductSize> ps = product.ProductSizes.Where(x => !x.IsAvailableSize).ToList();
+                product.ProductSizes = ps;
+                List<ProductPhoto> pp = product.ProductPhotos.Where(x => x.Order == 1).ToList();
+                product.ProductPhotos = pp;
+            }
+
+            return Ok(_mapper.Map<List<ProductListNewDto>>(products));
+        }
+        #endregion
+        #region GetNew
+        [HttpGet("best")]
+        public async Task<IActionResult> GetBest()
+        {
+            List<Product> products = await _context.Products.
+                Include(x => x.Brand).Include(x => x.SubCategory).Include(x => x.ProductSizes).ThenInclude(x => x.Size)
+                .Include(x => x.ProductColors).ThenInclude(x => x.Color).Include(x => x.ProductPhotos)
+                .Where(x => x.IsBestSeller).Take(3).OrderByDescending(x => x.CreatedAt).ToListAsync();
+
+            foreach (var product in products)
+            {
+                List<ProductColor> pc = product.ProductColors.Where(x => !x.IsAvailableColor).ToList();
+                product.ProductColors = pc;
+                List<ProductSize> ps = product.ProductSizes.Where(x => !x.IsAvailableSize).ToList();
+                product.ProductSizes = ps;
+                List<ProductPhoto> pp = product.ProductPhotos.Where(x => x.Order == 1).ToList();
+                product.ProductPhotos = pp;
+            }
+
+            return Ok(_mapper.Map<List<ProductListNewDto>>(products));
+        }
+        #endregion
+        #region GetNew
+        [HttpGet("feature")]
+        public async Task<IActionResult> GetFeature()
+        {
+            List<Product> products = await _context.Products.
+                Include(x => x.Brand).Include(x => x.SubCategory).Include(x => x.ProductSizes).ThenInclude(x => x.Size)
+                .Include(x => x.ProductColors).ThenInclude(x => x.Color).Include(x => x.ProductPhotos)
+                .Where(x => x.IsFeature).Take(3).OrderByDescending(x => x.CreatedAt).ToListAsync();
+
+            foreach (var product in products)
+            {
+                List<ProductColor> pc = product.ProductColors.Where(x => !x.IsAvailableColor).ToList();
+                product.ProductColors = pc;
+                List<ProductSize> ps = product.ProductSizes.Where(x => !x.IsAvailableSize).ToList();
+                product.ProductSizes = ps;
+                List<ProductPhoto> pp = product.ProductPhotos.Where(x => x.Order == 1).ToList();
+                product.ProductPhotos = pp;
+            }
+
+            return Ok(_mapper.Map<List<ProductListNewDto>>(products));
+        }
+        #endregion
+
         #region ProductReview
         [HttpPost("review")]
         public async Task<IActionResult> Review(ProductReview review)

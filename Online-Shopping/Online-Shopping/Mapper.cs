@@ -78,6 +78,7 @@ namespace Online_Shopping
                 .ForMember(dest => dest.BrandName, from => from.MapFrom(x => x.Brand.Name))
                 .ForMember(dest => dest.SubCategoryName, from => from.MapFrom(x => x.SubCategory.Name));
             CreateMap<Product, ProductBookmarkDto>();
+            CreateMap<Product, ProductListNewDto>();
 
 
 

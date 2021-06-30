@@ -16,6 +16,8 @@ namespace Online_Shopping.Data.Entities
         [Range(minimum: 1, maximum: int.MaxValue)]
         public int Order { get; set; }
         public bool IsDeleted { get; set; }
+        public string RedirectUrl { get; set; }
+
         public string Photo { get; set; }
 
         [NotMapped]

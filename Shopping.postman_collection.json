@@ -2512,14 +2512,17 @@
 							"response": []
 						},
 						{
-							"name": "GetAllPage",
+							"name": "GetNew",
 							"request": {
 								"method": "GET",
 								"header": [],
 								"url": {
-									"raw": "{{shopping}}products",
+									"raw": "{{shopping}}products/new",
 									"host": [
 										"{{shopping}}products"
+									],
+									"path": [
+										"new"
 									]
 								}
 							},
@@ -2537,6 +2540,71 @@
 									],
 									"path": [
 										"all"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "GetAllPage",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{shopping}}products",
+									"host": [
+										"{{shopping}}products"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "GetBestSeller",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{shopping}}products/best",
+									"host": [
+										"{{shopping}}products"
+									],
+									"path": [
+										"best"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "GetTrend",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{shopping}}products/trend",
+									"host": [
+										"{{shopping}}products"
+									],
+									"path": [
+										"trend"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "GetFeature",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{shopping}}products/feature",
+									"host": [
+										"{{shopping}}products"
+									],
+									"path": [
+										"feature"
 									]
 								}
 							},
@@ -2731,6 +2799,28 @@
 									],
 									"path": [
 										"1"
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "Feature",
+					"item": [
+						{
+							"name": "GetAll",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{shopping}}features/all",
+									"host": [
+										"{{shopping}}features"
+									],
+									"path": [
+										"all"
 									]
 								}
 							},

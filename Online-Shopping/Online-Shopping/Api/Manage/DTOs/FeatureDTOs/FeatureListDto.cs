@@ -16,6 +16,5 @@ namespace Online_Shopping.Api.Manage.DTOs
         public string Icon { get; set; }
         public string Title { get; set; }
         public string SubTitle { get; set; }
-        public int Order { get; set; }
     }
 }

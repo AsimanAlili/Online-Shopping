@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 
-namespace Online_Shopping.Api.Client.DTOs.PrdouctDTOs
+namespace Online_Shopping.Api.Client.DTOs
 {
     public class ProductListNewDto
     {
