@@ -1932,9 +1932,16 @@
 					"item": [
 						{
 							"name": "Get",
+							"protocolProfileBehavior": {
+								"disableBodyPruning": true
+							},
 							"request": {
 								"method": "GET",
 								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": ""
+								},
 								"url": {
 									"raw": "{{shopping}}manage/orders/1",
 									"host": [
@@ -1949,13 +1956,13 @@
 							"response": []
 						},
 						{
-							"name": "UpdateStatus",
+							"name": "Accept",
 							"request": {
 								"method": "PUT",
 								"header": [],
 								"body": {
 									"mode": "raw",
-									"raw": "{\r\n    \"Status\":1\r\n}",
+									"raw": "",
 									"options": {
 										"raw": {
 											"language": "json"
@@ -1963,12 +1970,97 @@
 									}
 								},
 								"url": {
-									"raw": "{{shopping}}manage/orders/1",
+									"raw": "{{shopping}}manage/orders/courier/1",
 									"host": [
 										"{{shopping}}manage"
 									],
 									"path": [
 										"orders",
+										"courier",
+										"1"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Courier",
+							"request": {
+								"method": "PUT",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{shopping}}manage/orders/accept/1",
+									"host": [
+										"{{shopping}}manage"
+									],
+									"path": [
+										"orders",
+										"accept",
+										"1"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Delivery",
+							"request": {
+								"method": "PUT",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{shopping}}manage/orders/delivered/1",
+									"host": [
+										"{{shopping}}manage"
+									],
+									"path": [
+										"orders",
+										"delivered",
+										"1"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Rejected",
+							"request": {
+								"method": "PUT",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{shopping}}manage/orders/rejected/1",
+									"host": [
+										"{{shopping}}manage"
+									],
+									"path": [
+										"orders",
+										"rejected",
 										"1"
 									]
 								}

@@ -131,7 +131,7 @@ namespace Online_Shopping.Api.Client.Controllers
             return Ok(_mapper.Map<List<ProductListNewDto>>(products));
         }
         #endregion
-        #region GetNew
+        #region GetTrend
         [HttpGet("trend")]
         public async Task<IActionResult> GetTrend()
         {
@@ -153,7 +153,7 @@ namespace Online_Shopping.Api.Client.Controllers
             return Ok(_mapper.Map<List<ProductListNewDto>>(products));
         }
         #endregion
-        #region GetNew
+        #region GetBest
         [HttpGet("best")]
         public async Task<IActionResult> GetBest()
         {

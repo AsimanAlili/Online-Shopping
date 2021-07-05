@@ -63,7 +63,7 @@ namespace Online_Shopping.Api.Manage.Controllers
 
 
 
-        [HttpPost("accept/{id}")]
+        [HttpPut("accept/{id}")]
         public async Task<IActionResult> Accept(int id)
         {
             Order order = await _context.Orders.FirstOrDefaultAsync(x => x.Id == id);
@@ -78,7 +78,7 @@ namespace Online_Shopping.Api.Manage.Controllers
 
         }
 
-        [HttpPost("courier/{id}")]
+        [HttpPut("courier/{id}")]
         public async Task<IActionResult> CourierDelivery(int id)
         {
             Order order = await _context.Orders.FirstOrDefaultAsync(x => x.Id == id);
@@ -93,7 +93,7 @@ namespace Online_Shopping.Api.Manage.Controllers
 
         }
 
-        [HttpPost("delivered/{id}")]
+        [HttpPut("delivered/{id}")]
         public async Task<IActionResult> Delivered(int id)
         {
             Order order = await _context.Orders.FirstOrDefaultAsync(x => x.Id == id);
@@ -107,7 +107,7 @@ namespace Online_Shopping.Api.Manage.Controllers
             return Ok();
         }
 
-        [HttpPost("rejected/{id}")]
+        [HttpPut("rejected/{id}")]
         public async Task<IActionResult> Rejected(int id)
         {
             Order order = await _context.Orders.FirstOrDefaultAsync(x => x.Id == id);
